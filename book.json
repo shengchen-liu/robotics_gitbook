@@ -1,0 +1,11 @@
+{
+	"title": "C++ learning Notes",
+    "description": "A collection of learning notes of C++",
+    "author": "Shengchen Liu",
+	"links": {
+	        "sidebar": {
+	            "Home": "https://shengchen-liu.github.io/"
+	        }
+	    },
+    "plugins": ["mathjax"]
+}
