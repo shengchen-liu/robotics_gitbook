@@ -7,5 +7,12 @@
 	            "Home": "https://shengchen-liu.github.io/"
 	        }
 	    },
-    "plugins": ["mathjax"]
+    "plugins": [
+    	"mathjax",
+    	"back-to-top-button",
+    	"code",
+    	"splitter",
+    	"page-treeview",
+    	"multipart"
+    ]
 }

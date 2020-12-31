@@ -1,0 +1,564 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Continuous Representation · Robotics learning Notes</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="Shengchen Liu">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-treeview/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-multipart/multipart.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="discrete planning.html" />
+    
+    
+    <link rel="prev" href="path_planning.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://shengchen-liu.github.io/" target="_blank" class="custom-link">Home</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="path_planning.html">
+            
+                <a href="path_planning.html">
+            
+                    
+                    Path Planning
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.2.1" data-path="continuous_representation.html">
+            
+                <a href="continuous_representation.html">
+            
+                    
+                    Continuous Representation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="discrete planning.html">
+            
+                <a href="discrete planning.html">
+            
+                    
+                    Discretization
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.2.1" data-path="roadmap.html">
+            
+                <a href="roadmap.html">
+            
+                    
+                    Roadmap
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.2" data-path="visibility_graph.html">
+            
+                <a href="visibility_graph.html">
+            
+                    
+                    Visibility graph
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.2.2.1" data-path="voronoi.html">
+            
+                <a href="voronoi.html">
+            
+                    
+                    Voronoi Diagram
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.3" data-path="cell_decomposition.html">
+            
+                <a href="cell_decomposition.html">
+            
+                    
+                    Cell Decomposition
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.2.3.1" data-path="exact_cell_decomposition.html">
+            
+                <a href="exact_cell_decomposition.html">
+            
+                    
+                    Exact Cell Decomposition
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.3.2" data-path="approximate_cell_decomposition.html">
+            
+                <a href="approximate_cell_decomposition.html">
+            
+                    
+                    Approximate Cell Decomposition
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.4" data-path="potential_field.html">
+            
+                <a href="potential_field.html">
+            
+                    
+                    Potential Field
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="graph_search.html">
+            
+                <a href="graph_search.html">
+            
+                    
+                    Graph Search
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Continuous Representation</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <div class="treeview__container"><div class="treeview__container-title"><span class="treeview__main-title">Treeview</span><span class="treeview__copyright">Copyright &#xA9; aleen42 all right reserved, powered by <a href="https://github.com/aleen42" target="_blank">aleen42</a></span></div><ul>
+<li><div><a href="#continuous-representation">Continuous Representation</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#configuration-space-c-space">Configuration Space (C-space)</a><i></i></div></li>
+<li><div><a href="#minkowski-sum">Minkowski Sum</a><i></i></div></li>
+<li><div><a href="#minkowski-sum-c">Minkowski Sum C++</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#generated-configuration-space">Generated Configuration Space</a><i></i></div></li>
+<li><div><a href="#translation">Translation</a><i></i></div></li>
+<li><div><a href="#final-result">Final Result</a><i></i></div></li>
+</ul></li>
+<li><div><a href="#3d-configuration-space">3D Configuration Space</a><i></i></div></li>
+</ul></li>
+</ul>
+</div>
+
+<h1 id="continuous-representation">Continuous Representation</h1>
+<h2 id="configuration-space-c-space">Configuration Space (C-space)</h2>
+<p>To account for the geometry of a robot and simplify the task of path planning, obstacles in the workspace can be inflated to create a new space called the the configuration space (C-space). With the obstacles inflated by the radius of the robot, the robot can then be treated as a point, making it easier for an algorithm to search for a path.  The C-space is the set of all robot poses, and can be broken-down into <script type="math/tex; ">C_{Free}</script> and <script type="math/tex; ">C_{Obs}</script>.</p>
+<p><img src="assets/continuos2.png" alt=""></p>
+<h2 id="minkowski-sum">Minkowski Sum</h2>
+<p>The Minkowski sum is a mathematical property that can be used to compute the configuration space given an obstacle geometry and robot geometry.  The intuition behind the Minkowski sum is calculated can be understood by imagining to paint the outside of an obstacle using a paintbrush that is shaped like your robot, with the robot&apos;s <strong>origin</strong> as the <strong>tip</strong> of the paintbrush.  The painted area is <script type="math/tex; ">C_{Obs}</script></p>
+<p><img src="assets/c5-l2-24-minkowski-sum-02-v1.png" alt=""></p>
+<p>To create the configuration space, the Minkowski sum is calculated in such a way for every obstacle in the workspace. The image below shows three configuration spaces created from a single workspace with three different sized robots. As you can see, if the robot is just a dot, then the obstacles in the workspace are only inflated by a small amount to create the C-space. As the size of the robot increases, the obstacles are inflated more and more.</p>
+<p><img src="assets/c5-l2-22-minkowski-sum-01-v1.png" alt=""></p>
+<h2 id="minkowski-sum-c">Minkowski Sum C++</h2>
+<p>In this example, you can see two triangles - a blue and a red one. Let&apos;s suppose the robot is represented by a blue triangle and the obstacle is represented by a red triangle. Your task is to compute the configuration space <strong>C</strong> of robot <strong>A</strong> and obstacle <strong>B</strong> in C++.</p>
+<ul>
+<li><p><strong>Robot</strong>: Blue triangle denoted by A</p>
+</li>
+<li><p><strong>Obstacle</strong>: Red triangle denoted by B</p>
+<p><img src="assets/minkowski-sum-initial.png" alt=""></p>
+</li>
+</ul>
+<pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;vector&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;algorithm&gt;</span></span>
+
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;
+
+<span class="hljs-comment">// Print 2D vectors coordinate values</span>
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">print2DVector</span><span class="hljs-params">(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; &gt; vec)</span>
+</span>{
+    <span class="hljs-comment">// Sorting the vector for grading purpose</span>
+    sort(vec.begin(), vec.end());
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; vec.size(); ++i) {
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; vec[<span class="hljs-number">0</span>].size(); ++j) {
+                <span class="hljs-built_in">cout</span> &lt;&lt; vec[i][j] &lt;&lt; <span class="hljs-string">&quot;  &quot;</span>;
+        }
+        <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-built_in">endl</span>;
+    }
+}
+
+<span class="hljs-comment">// Check for duplicate coordinates inside a 2D vector and delete them</span>
+<span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; &gt; delete_duplicate(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; &gt; C)
+{
+    <span class="hljs-comment">// Sort the C vector</span>
+    sort(C.begin(), C.end());
+    <span class="hljs-comment">// Initialize a non duplicated vector</span>
+    <span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; &gt; Cn;
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; C.size() - <span class="hljs-number">1</span>; i++) {
+        <span class="hljs-comment">// Check if it&apos;s a duplicate coordinate</span>
+        <span class="hljs-keyword">if</span> (C[i] != C[i + <span class="hljs-number">1</span>]) {
+            Cn.push_back(C[i]);
+        }
+    }
+    Cn.push_back(C[C.size() - <span class="hljs-number">1</span>]);
+    <span class="hljs-keyword">return</span> Cn;
+}
+
+<span class="hljs-comment">// Compute the Minkowski Sum of two vectors</span>
+<span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; &gt; minkowski_sum(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; &gt; A, <span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; &gt; B)
+{
+    <span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; &gt; C;
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; A.size(); i++) {
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; B.size(); j++) {
+            <span class="hljs-comment">// Compute the current sum</span>
+            <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; Ci = { A[i][<span class="hljs-number">0</span>] + B[j][<span class="hljs-number">0</span>], A[i][<span class="hljs-number">1</span>] + B[j][<span class="hljs-number">1</span>] };
+            <span class="hljs-comment">// Push it to the C vector</span>
+            C.push_back(Ci);
+        }
+    }
+    C = delete_duplicate(C);
+    <span class="hljs-keyword">return</span> C;
+}
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-comment">// Define the coordinates of triangle A and B using 2D vectors</span>
+    <span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; &gt; A(<span class="hljs-number">3</span>, <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;(<span class="hljs-number">2</span>));
+    <span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; &gt; B(<span class="hljs-number">3</span>, <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;(<span class="hljs-number">2</span>));
+
+    <span class="hljs-comment">// Compute the minkowski sum of triangle A and B</span>
+    <span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; &gt; C;
+    C = minkowski_sum(A, B);
+
+    <span class="hljs-comment">// Print the resulting vector</span>
+    print2DVector(C);
+
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<h3 id="generated-configuration-space">Generated Configuration Space</h3>
+<p><img src="assets/minkowski-sum-nonshifted.png" alt=""></p>
+<h3 id="translation">Translation</h3>
+<p>You successfully coded the Minkowski sum in C++ and generated the configuration space. You can easily notice that the red obstacle is not well inflated and the blue robot can still hit the obstacle. That&apos;s because the configuration space still has to be shifted to the obstacle.</p>
+<p>Initially, the robot should be translated to the obstacle, and then after computing the configuration space, it should be translated to both the robot and obstacle.</p>
+<h3 id="final-result">Final Result</h3>
+<p><img src="assets/minkowski-sum-final.png" alt=""></p>
+<h2 id="3d-configuration-space">3D Configuration Space</h2>
+<p>As you saw, the configuration space for a robot changes depending on its rotation. Allowing a robot to rotate adds a degree of freedom - so, sensibly, it complicates the configuration space as well. Luckily, this is actually very simple to handle. The dimension of the configuration space is equal to the number of degrees of freedom that the robot has.</p>
+<p>While a 2D configuration space was able to represent the x- and y-translation of the robot, a third dimension is required to represent the rotation of the robot.</p>
+<p>Let&#x2019;s look at a robot and its corresponding configuration space for two different rotations. The first will have the robot at 0&#xB0;, and the second at 18&#xB0;.</p>
+<p><img src="assets/c5-l2-32-configuration-space-01-v1.png" alt=""></p>
+<p><img src="assets/c5-l2-33-configuration-space-02-v1.png" alt=""></p>
+<p>A three-dimensional configuration space can be generated by stacking two-dimensional configuration spaces as layers - as seen in the image below.</p>
+<p><img src="assets/c5-l2-35-configuration-space-03-v1.png" alt=""></p>
+<p>If we were to calculate the configuration spaces for infinitesimally small rotations of the robot, and stack them on top of each other - we would get something that looks like the image below.</p>
+<p><img src="assets/c5-l2-37-3dimage-v3.png" alt=""></p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="path_planning.html" class="navigation navigation-prev " aria-label="Previous page: Path Planning">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="discrete planning.html" class="navigation navigation-next " aria-label="Next page: Discretization">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Continuous Representation","level":"1.2.1","depth":2,"next":{"title":"Discretization","level":"1.2.2","depth":2,"path":"path_planning/discrete planning.md","ref":"path_planning/discrete planning.md","articles":[{"title":"Roadmap","level":"1.2.2.1","depth":3,"path":"path_planning/roadmap.md","ref":"path_planning/roadmap.md","articles":[]},{"title":"Visibility graph","level":"1.2.2.2","depth":3,"path":"path_planning/visibility_graph.md","ref":"path_planning/visibility_graph.md","articles":[{"title":"Voronoi Diagram","level":"1.2.2.2.1","depth":4,"path":"path_planning/voronoi.md","ref":"path_planning/voronoi.md","articles":[]}]},{"title":"Cell Decomposition","level":"1.2.2.3","depth":3,"path":"path_planning/cell_decomposition.md","ref":"path_planning/cell_decomposition.md","articles":[{"title":"Exact Cell Decomposition","level":"1.2.2.3.1","depth":4,"path":"path_planning/exact_cell_decomposition.md","ref":"path_planning/exact_cell_decomposition.md","articles":[]},{"title":"Approximate Cell Decomposition","level":"1.2.2.3.2","depth":4,"path":"path_planning/approximate_cell_decomposition.md","ref":"path_planning/approximate_cell_decomposition.md","articles":[]}]},{"title":"Potential Field","level":"1.2.2.4","depth":3,"path":"path_planning/potential_field.md","ref":"path_planning/potential_field.md","articles":[]}]},"previous":{"title":"Path Planning","level":"1.2","depth":1,"path":"path_planning/path_planning.md","ref":"path_planning/path_planning.md","articles":[{"title":"Continuous Representation","level":"1.2.1","depth":2,"path":"path_planning/continuous_representation.md","ref":"path_planning/continuous_representation.md","articles":[]},{"title":"Discretization","level":"1.2.2","depth":2,"path":"path_planning/discrete planning.md","ref":"path_planning/discrete planning.md","articles":[{"title":"Roadmap","level":"1.2.2.1","depth":3,"path":"path_planning/roadmap.md","ref":"path_planning/roadmap.md","articles":[]},{"title":"Visibility graph","level":"1.2.2.2","depth":3,"path":"path_planning/visibility_graph.md","ref":"path_planning/visibility_graph.md","articles":[{"title":"Voronoi Diagram","level":"1.2.2.2.1","depth":4,"path":"path_planning/voronoi.md","ref":"path_planning/voronoi.md","articles":[]}]},{"title":"Cell Decomposition","level":"1.2.2.3","depth":3,"path":"path_planning/cell_decomposition.md","ref":"path_planning/cell_decomposition.md","articles":[{"title":"Exact Cell Decomposition","level":"1.2.2.3.1","depth":4,"path":"path_planning/exact_cell_decomposition.md","ref":"path_planning/exact_cell_decomposition.md","articles":[]},{"title":"Approximate Cell Decomposition","level":"1.2.2.3.2","depth":4,"path":"path_planning/approximate_cell_decomposition.md","ref":"path_planning/approximate_cell_decomposition.md","articles":[]}]},{"title":"Potential Field","level":"1.2.2.4","depth":3,"path":"path_planning/potential_field.md","ref":"path_planning/potential_field.md","articles":[]}]},{"title":"Graph Search","level":"1.2.3","depth":2,"path":"path_planning/graph_search.md","ref":"path_planning/graph_search.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["mathjax","back-to-top-button","code","splitter","page-treeview","multipart"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"page-treeview":{"collapsed":false,"copyright":"Copyright © aleen42","minHeaderCount":"1","minHeaderDeep":"1"},"splitter":{},"search":{},"multipart":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"mathjax":{"forceSVG":false,"version":"2.6-latest"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Shengchen Liu","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Robotics learning Notes","links":{"sidebar":{"Home":"https://shengchen-liu.github.io/"}},"gitbook":"*","description":"A collection of learning notes of Robotics"},"file":{"path":"path_planning/continuous_representation.md","mtime":"2020-12-30T06:07:28.152Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-31T22:52:31.636Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="https://cdn.mathjax.org/mathjax/2.6-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-mathjax/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
