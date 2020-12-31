@@ -2,18 +2,20 @@
 
 * [Introduction](README.md)
 
-* [Path Planning](path_planning.md)
+* [Path Planning](path_planning/path_planning.md)
 
-  * [Continuous Representation](continuous_representation.md)
-
-  * [Discrete Planning](discrete planning.md)
-
-    * [Roadmap](roadmap.md)
-
-      * [Visibility graph](visibility_graph.md)
-      * [Voronoi Diagram](voronoi.md)
-
-    * [Cell Decomposition](cell_decomposition.md)
-
-      
-
+  * [Continuous Representation](path_planning/continuous_representation.md)
+  * [Discretization](path_planning/discrete planning.md)
+    * [Roadmap](path_planning/roadmap.md)
+  
+    * [Visibility graph](path_planning/visibility_graph.md)
+      * [Voronoi Diagram](path_planning/voronoi.md)
+    * [Cell Decomposition](path_planning/cell_decomposition.md)
+      * [Exact Cell Decomposition](path_planning/exact_cell_decomposition.md)
+      * [Approximate Cell Decomposition](path_planning/approximate_cell_decomposition.md)
+  
+    * [Potential Field](path_planning/potential_field.md)
+  
+  * [Graph Search](path_planning/graph_search.md)
+  
+    

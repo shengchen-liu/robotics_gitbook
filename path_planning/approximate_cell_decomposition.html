@@ -1,0 +1,486 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Approximate Cell Decomposition · Robotics learning Notes</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="Shengchen Liu">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-treeview/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-multipart/multipart.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="potential_field.html" />
+    
+    
+    <link rel="prev" href="exact_cell_decomposition.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://shengchen-liu.github.io/" target="_blank" class="custom-link">Home</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="path_planning.html">
+            
+                <a href="path_planning.html">
+            
+                    
+                    Path Planning
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="continuous_representation.html">
+            
+                <a href="continuous_representation.html">
+            
+                    
+                    Continuous Representation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="discrete planning.html">
+            
+                <a href="discrete planning.html">
+            
+                    
+                    Discretization
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.2.1" data-path="roadmap.html">
+            
+                <a href="roadmap.html">
+            
+                    
+                    Roadmap
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.2" data-path="visibility_graph.html">
+            
+                <a href="visibility_graph.html">
+            
+                    
+                    Visibility graph
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.2.2.1" data-path="voronoi.html">
+            
+                <a href="voronoi.html">
+            
+                    
+                    Voronoi Diagram
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.3" data-path="cell_decomposition.html">
+            
+                <a href="cell_decomposition.html">
+            
+                    
+                    Cell Decomposition
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.2.3.1" data-path="exact_cell_decomposition.html">
+            
+                <a href="exact_cell_decomposition.html">
+            
+                    
+                    Exact Cell Decomposition
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.2.3.2" data-path="approximate_cell_decomposition.html">
+            
+                <a href="approximate_cell_decomposition.html">
+            
+                    
+                    Approximate Cell Decomposition
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.4" data-path="potential_field.html">
+            
+                <a href="potential_field.html">
+            
+                    
+                    Potential Field
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="graph_search.html">
+            
+                <a href="graph_search.html">
+            
+                    
+                    Graph Search
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Approximate Cell Decomposition</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <div class="treeview__container"><div class="treeview__container-title"><span class="treeview__main-title">Treeview</span><span class="treeview__copyright">Copyright &#xA9; aleen42 all right reserved, powered by <a href="https://github.com/aleen42" target="_blank">aleen42</a></span></div><ul>
+<li><div><a href="#approximate-cell-decomposition">Approximate Cell Decomposition</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#simple-decomposition">Simple Decomposition</a><i></i></div></li>
+<li><div><a href="#iterative-decomposition-quadtree">Iterative Decomposition (QuadTree)</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#algorithm">Algorithm</a><i></i></div></li>
+</ul></li>
+<li><div><a href="#octrees">Octrees</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#advantage">Advantage</a><i></i></div></li>
+<li><div><a href="#disadvantage">Disadvantage</a><i></i></div></li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+
+<h1 id="approximate-cell-decomposition">Approximate Cell Decomposition</h1>
+<p>Approximate cell decomposition divides a configuration space into discrete cells of <strong>simple, regular shapes</strong> -  such as rectangles and squares (or other multidimensional equivalents).  Aside from simplifying the computation of cells, this method also supports hierarchical decomposition of space.</p>
+<h2 id="simple-decomposition">Simple Decomposition</h2>
+<p>A 2-dimensional configuration space can be decomposed into a grid of rectangular cells.  Then, each cell could be marked or empty, as before.  A search algorithm can then look for a sequence of free cells to connect the start node to the final node.</p>
+<p>Such a method is more efficient than exact cell decomposition, but it losses its completeness.  It is possible that a particular configuration space contains a feasible path, but the resolution of the cells results in some of the cells encompassing the path to be marked &quot;full&quot;  due to the presence of obstacles.  A cell will be marked &quot;full&quot; whether 99% of the space is occupied by an obstacle or a mere 1%.  Evidently, this is not practical.</p>
+<h2 id="iterative-decomposition-quadtree">Iterative Decomposition (QuadTree)</h2>
+<p>An alternate method of partitioning a space into simple cells exists.  Instead of immediately decomposing the space into small cells of equal size, the method recursively decomposes a space into four quadrants.  Each quadrant is marked <em>full</em>, <em>empty</em>, or a new label called &apos;<em>mixed</em>&apos; - used to represent cells that are somewhat occupied by an obstacle, but also contain some free space.  If a sequence of free cells cannot be found from start to goal, then the mixed cells will be further decomposed into another four quadrants.  Through this process, more free cells will emerge, eventually revealing a path if one exists.</p>
+<p>The 2-dimensional implementation of this method is called <strong>quadtree</strong> decomposition.</p>
+<h3 id="algorithm">Algorithm</h3>
+<pre><code>Decompose the configuration space into four cells, label cells free, mixed or full.
+Search for a sequecne of free cells that connect the start node to the goal node.
+If such a sequence exists:
+    \quadReturn path
+Else:
+    \quadFurther decomposes the mixed cells
+</code></pre><p><img src="assets/c5-l2-67-exact-cell-decomposition-applied-v4.png" alt=""></p>
+<h2 id="octrees">Octrees</h2>
+<p>The 3-dimensional equivalent of quadtrees are octrees, depicted in the image below.  The method discretizing a space with any number of dimensions follows the same procedure as the algorithm described above, but expanded to accommodate the additional dimensions.</p>
+<p><img src="assets/c5-l2-69-octrees-image-01-v1.png" alt=""></p>
+<p>Although exact cell decomposition is a more elegant method, it is much more computationally expensive than approximate cell decomposition for non-trivial environments. For this reason, <strong>approximate cell decomposition is commonly used in practice.</strong></p>
+<h3 id="advantage">Advantage</h3>
+<p>With enough computation, approximate cell decomposition approaches completeness.  However it is not optimal = the resultant path depends on how cells are decomposed.  Approximate cell decomposition find the obvious solution quickly.  It is possible that the optimal path squeezes through a minuscule opening between obstacles, but the resultant path takes a much longer route through wide open spaces - one that the recursively-decomposing algorithms would find first.</p>
+<h3 id="disadvantage">Disadvantage</h3>
+<p>Approximate cell decomposition is functional, but like all discrete/combinatorial path planning methods - it starts to be computationally intractable for use with high-dimensional environments.</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="exact_cell_decomposition.html" class="navigation navigation-prev " aria-label="Previous page: Exact Cell Decomposition">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="potential_field.html" class="navigation navigation-next " aria-label="Next page: Potential Field">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Approximate Cell Decomposition","level":"1.2.2.3.2","depth":4,"next":{"title":"Potential Field","level":"1.2.2.4","depth":3,"path":"path_planning/potential_field.md","ref":"path_planning/potential_field.md","articles":[]},"previous":{"title":"Exact Cell Decomposition","level":"1.2.2.3.1","depth":4,"path":"path_planning/exact_cell_decomposition.md","ref":"path_planning/exact_cell_decomposition.md","articles":[]},"dir":"ltr"},"config":{"plugins":["mathjax","back-to-top-button","code","splitter","page-treeview","multipart"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"page-treeview":{"collapsed":false,"copyright":"Copyright © aleen42","minHeaderCount":"1","minHeaderDeep":"1"},"splitter":{},"search":{},"multipart":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"mathjax":{"forceSVG":false,"version":"2.6-latest"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Shengchen Liu","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Robotics learning Notes","links":{"sidebar":{"Home":"https://shengchen-liu.github.io/"}},"gitbook":"*","description":"A collection of learning notes of Robotics"},"file":{"path":"path_planning/approximate_cell_decomposition.md","mtime":"2020-12-31T21:51:36.958Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-31T22:52:31.636Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="https://cdn.mathjax.org/mathjax/2.6-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-mathjax/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
