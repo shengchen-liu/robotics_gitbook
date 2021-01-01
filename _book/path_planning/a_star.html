@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Approximate Cell Decomposition · Robotics learning Notes</title>
+        <title>A* · Robotics learning Notes</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -77,10 +77,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="potential_field.html" />
     
-    
-    <link rel="prev" href="exact_cell_decomposition.html" />
+    <link rel="prev" href="graph_search.html" />
     
 
     </head>
@@ -244,7 +242,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.2.2.3.2" data-path="approximate_cell_decomposition.html">
+        <li class="chapter " data-level="1.2.2.3.2" data-path="approximate_cell_decomposition.html">
             
                 <a href="approximate_cell_decomposition.html">
             
@@ -294,7 +292,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.2.3.1" data-path="a_star.html">
+        <li class="chapter active" data-level="1.2.3.1" data-path="a_star.html">
             
                 <a href="a_star.html">
             
@@ -347,7 +345,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Approximate Cell Decomposition</a>
+        <a href=".." >A*</a>
     </h1>
 </div>
 
@@ -363,46 +361,110 @@
                                 <section class="normal markdown-section">
                                 
                                 <div class="treeview__container"><div class="treeview__container-title"><span class="treeview__main-title">Treeview</span><span class="treeview__copyright">Copyright &#xA9; aleen42 all right reserved, powered by <a href="https://github.com/aleen42" target="_blank">aleen42</a></span></div><ul>
-<li><div><a href="#approximate-cell-decomposition">Approximate Cell Decomposition</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
-<ul>
-<li><div><a href="#simple-decomposition">Simple Decomposition</a><i></i></div></li>
-<li><div><a href="#iterative-decomposition-quadtree">Iterative Decomposition (QuadTree)</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<li><div><a href="#a-search">A* Search</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
 <ul>
 <li><div><a href="#algorithm">Algorithm</a><i></i></div></li>
-</ul></li>
-<li><div><a href="#octrees">Octrees</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
-<ul>
-<li><div><a href="#advantage">Advantage</a><i></i></div></li>
-<li><div><a href="#disadvantage">Disadvantage</a><i></i></div></li>
-</ul></li>
+<li><div><a href="#heuristics">Heuristics</a><i></i></div></li>
 </ul></li>
 </ul>
 </div>
 
-<h1 id="approximate-cell-decomposition">Approximate Cell Decomposition</h1>
-<p>Approximate cell decomposition divides a configuration space into discrete cells of <strong>simple, regular shapes</strong> -  such as rectangles and squares (or other multidimensional equivalents).  Aside from simplifying the computation of cells, this method also supports hierarchical decomposition of space.</p>
-<h2 id="simple-decomposition">Simple Decomposition</h2>
-<p>A 2-dimensional configuration space can be decomposed into a grid of rectangular cells.  Then, each cell could be marked or empty, as before.  A search algorithm can then look for a sequence of free cells to connect the start node to the final node.</p>
-<p>Such a method is more efficient than exact cell decomposition, but it losses its completeness.  It is possible that a particular configuration space contains a feasible path, but the resolution of the cells results in some of the cells encompassing the path to be marked &quot;full&quot;  due to the presence of obstacles.  A cell will be marked &quot;full&quot; whether 99% of the space is occupied by an obstacle or a mere 1%.  Evidently, this is not practical.</p>
-<h2 id="iterative-decomposition-quadtree">Iterative Decomposition (QuadTree)</h2>
-<p>An alternate method of partitioning a space into simple cells exists.  Instead of immediately decomposing the space into small cells of equal size, the method recursively decomposes a space into four quadrants.  Each quadrant is marked <em>full</em>, <em>empty</em>, or a new label called &apos;<em>mixed</em>&apos; - used to represent cells that are somewhat occupied by an obstacle, but also contain some free space.  If a sequence of free cells cannot be found from start to goal, then the mixed cells will be further decomposed into another four quadrants.  Through this process, more free cells will emerge, eventually revealing a path if one exists.</p>
-<p>The 2-dimensional implementation of this method is called <strong>quadtree</strong> decomposition.</p>
-<h3 id="algorithm">Algorithm</h3>
-<pre><code>Decompose the configuration space into four cells, label cells free, mixed or full.
-Search for a sequecne of free cells that connect the start node to the goal node.
-If such a sequence exists:
-    \quadReturn path
-Else:
-    \quadFurther decomposes the mixed cells
-</code></pre><p><img src="assets/c5-l2-67-exact-cell-decomposition-applied-v4.png" alt=""></p>
-<h2 id="octrees">Octrees</h2>
-<p>The 3-dimensional equivalent of quadtrees are octrees, depicted in the image below.  The method discretizing a space with any number of dimensions follows the same procedure as the algorithm described above, but expanded to accommodate the additional dimensions.</p>
-<p><img src="assets/c5-l2-69-octrees-image-01-v1.png" alt=""></p>
-<p>Although exact cell decomposition is a more elegant method, it is much more computationally expensive than approximate cell decomposition for non-trivial environments. For this reason, <strong>approximate cell decomposition is commonly used in practice.</strong></p>
-<h3 id="advantage">Advantage</h3>
-<p>With enough computation, approximate cell decomposition approaches completeness.  However it is not optimal = the resultant path depends on how cells are decomposed.  Approximate cell decomposition find the obvious solution quickly.  It is possible that the optimal path squeezes through a minuscule opening between obstacles, but the resultant path takes a much longer route through wide open spaces - one that the recursively-decomposing algorithms would find first.</p>
-<h3 id="disadvantage">Disadvantage</h3>
-<p>Approximate cell decomposition is functional, but like all discrete/combinatorial path planning methods - it starts to be computationally intractable for use with high-dimensional environments.</p>
+<h1 id="a-search">A* Search</h1>
+<p>What A<em> Search Algorithm does is that at each step it picks the node according to a value-&#x2018;<strong>f</strong>&#x2019; which is a parameter equal to the sum of two other parameters &#x2013; &#x2018;<strong>g</strong>&#x2019; and &#x2018;<strong>h</strong>&#x2019;. At each step it picks the node/cell having the lowest &#x2018;<em>*f</em></em>&#x2019;, and process that node/cell.</p>
+<p>&apos;g&apos;: the movement cost to move from the starting point to a given square on the grid, following the path generated to get there.</p>
+<p>&apos;h&apos;: heuristic function.  Estimate the movement cost from that given square on the grid the final destination.</p>
+<h2 id="algorithm">Algorithm</h2>
+<p>Two lists - Open List and Closed List</p>
+<pre><code>function reconstruct_path(cameFrom, current)
+    total_path := {current}
+    while current in cameFrom.Keys:
+        current := cameFrom[current]
+        total_path.prepend(current)
+    return total_path
+
+// A* finds a path from start to goal.
+// h is the heuristic function. h(n) estimates the cost to reach goal from node n.
+function A_Star(start, goal, h)
+    // The set of discovered nodes that may need to be (re-)expanded.
+    // Initially, only the start node is known.
+    // This is usually implemented as a min-heap or priority queue rather than a hash-set.
+    openSet := {start}
+
+    // For node n, cameFrom[n] is the node immediately preceding it on the cheapest path from start
+    // to n currently known.
+    cameFrom := an empty map
+
+    // For node n, gScore[n] is the cost of the cheapest path from start to n currently known.
+    gScore := map with default value of Infinity
+    gScore[start] := 0
+
+    // For node n, fScore[n] := gScore[n] + h(n). fScore[n] represents our current best guess as to
+    // how short a path from start to finish can be if it goes through n.
+    fScore := map with default value of Infinity
+    fScore[start] := h(start)
+
+    while openSet is not empty
+        // This operation can occur in O(1) time if openSet is a min-heap or a priority queue
+        current := the node in openSet having the lowest fScore[] value
+        if current = goal
+            return reconstruct_path(cameFrom, current)
+
+        openSet.Remove(current)
+        for each neighbor of current
+            // d(current,neighbor) is the weight of the edge from current to neighbor
+            // tentative_gScore is the distance from start to the neighbor through current
+            tentative_gScore := gScore[current] + d(current, neighbor)
+            if tentative_gScore &lt; gScore[neighbor]
+                // This path to neighbor is better than any previous one. Record it!
+                cameFrom[neighbor] := current
+                gScore[neighbor] := tentative_gScore
+                fScore[neighbor] := gScore[neighbor] + h(neighbor)
+                if neighbor not in openSet
+                    openSet.add(neighbor)
+
+    // Open set is empty but goal was never reached
+    return failure
+</code></pre><h2 id="heuristics">Heuristics</h2>
+<p>A) <strong>Exact Heuristics</strong> &#x2013;</p>
+<p>We can find exact values of h, but that is generally very time consuming.</p>
+<p>Below are some of the methods to calculate the exact value of h.</p>
+<p>1) Pre-compute the distance between each pair of cells before running the A* Search Algorithm.</p>
+<p>2) If there are no blocked cells/obstacles then we can just find the exact value of h without any pre-computation using the <a href="https://en.wikipedia.org/wiki/Euclidean_distance" target="_blank">distance formula/Euclidean Distance</a></p>
+<p><strong>B) Approximation Heuristics &#x2013;</strong> </p>
+<p> There are generally three approximation heuristics to calculate h &#x2013;</p>
+<p><strong>1) Manhattan Distance &#x2013;</strong></p>
+<ul>
+<li><p>It is nothing but the sum of absolute values of differences in the  goal&#x2019;s x and y coordinates  and the current cell&#x2019;s x and y coordinates  respectively, i.e.,</p>
+<pre><code>h = abs (current_cell.x &#x2013; goal.x) + 
+    abs (current_cell.y &#x2013; goal.y)
+</code></pre></li>
+<li><p>When to use this heuristic? &#x2013; When we are allowed to move only in four directions only (right, left, top, bottom)</p>
+</li>
+</ul>
+<p>The Manhattan Distance Heuristics is shown by the below figure (assume red spot as source cell and green spot as target cell).
+ <img src="assets/a_-search-algorithm-3.png" alt="Manhattan_Heuristics"></p>
+<p><strong>2) Diagonal Distance-</strong></p>
+<ul>
+<li><p>It is nothing but the maximum of absolute values of differences in  the goal&#x2019;s x and y coordinates  and the current cell&#x2019;s x and y  coordinates respectively, i.e.,</p>
+<pre><code>h = max { abs(current_cell.x &#x2013; goal.x),
+          abs(current_cell.y &#x2013; goal.y) }
+</code></pre></li>
+<li><p>When to use this heuristic?  &#x2013; When we are allowed to move in eight directions only (similar to a move of a King in Chess)</p>
+</li>
+</ul>
+<p>The Diagonal Distance Heuristics is shown by the below figure (assume red spot as source cell and green spot as target cell).</p>
+<p><img src="assets/a_-search-algorithm-4.png" alt="Diagonal_Heuristics"></p>
+<p><strong>3) Euclidean Distance-</strong></p>
+<ul>
+<li><p>As it is clear from its name, it is nothing but the distance  between the current cell and the goal cell using the distance formula</p>
+<pre><code>h = sqrt ( (current_cell.x &#x2013; goal.x)2 + 
+           (current_cell.y &#x2013; goal.y)2 )
+</code></pre></li>
+<li><p>When to use this heuristic?  &#x2013; When we are allowed to move in any directions. </p>
+</li>
+</ul>
+<p>The Euclidean Distance Heuristics is shown by the below figure (assume red spot as source cell and green spot as target cell).</p>
+<p><img src="assets/a_-search-algorithm-5.png" alt="Euclidean_Heuristics"></p>
 
                                 
                                 </section>
@@ -430,14 +492,10 @@ Else:
 
             
                 
-                <a href="exact_cell_decomposition.html" class="navigation navigation-prev " aria-label="Previous page: Exact Cell Decomposition">
+                <a href="graph_search.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Graph Search">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="potential_field.html" class="navigation navigation-next " aria-label="Next page: Potential Field">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -446,7 +504,7 @@ Else:
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Approximate Cell Decomposition","level":"1.2.2.3.2","depth":4,"next":{"title":"Potential Field","level":"1.2.2.4","depth":3,"path":"path_planning/potential_field.md","ref":"path_planning/potential_field.md","articles":[]},"previous":{"title":"Exact Cell Decomposition","level":"1.2.2.3.1","depth":4,"path":"path_planning/exact_cell_decomposition.md","ref":"path_planning/exact_cell_decomposition.md","articles":[]},"dir":"ltr"},"config":{"plugins":["mathjax","back-to-top-button","code","splitter","page-treeview","multipart"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"page-treeview":{"collapsed":false,"copyright":"Copyright © aleen42","minHeaderCount":"1","minHeaderDeep":"1"},"splitter":{},"search":{},"multipart":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"mathjax":{"forceSVG":false,"version":"2.6-latest"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Shengchen Liu","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Robotics learning Notes","links":{"sidebar":{"Home":"https://shengchen-liu.github.io/"}},"gitbook":"*","description":"A collection of learning notes of Robotics"},"file":{"path":"path_planning/approximate_cell_decomposition.md","mtime":"2020-12-31T22:52:44.100Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-01-01T19:35:05.079Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"A*","level":"1.2.3.1","depth":3,"previous":{"title":"Graph Search","level":"1.2.3","depth":2,"path":"path_planning/graph_search.md","ref":"path_planning/graph_search.md","articles":[{"title":"A*","level":"1.2.3.1","depth":3,"path":"path_planning/a_star.md","ref":"path_planning/a_star.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["mathjax","back-to-top-button","code","splitter","page-treeview","multipart"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"page-treeview":{"collapsed":false,"copyright":"Copyright © aleen42","minHeaderCount":"1","minHeaderDeep":"1"},"splitter":{},"search":{},"multipart":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"mathjax":{"forceSVG":false,"version":"2.6-latest"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Shengchen Liu","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Robotics learning Notes","links":{"sidebar":{"Home":"https://shengchen-liu.github.io/"}},"gitbook":"*","description":"A collection of learning notes of Robotics"},"file":{"path":"path_planning/a_star.md","mtime":"2021-01-01T19:09:05.917Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-01-01T19:35:05.079Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
