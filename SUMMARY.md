@@ -2,6 +2,12 @@
 
 * [Introduction](README.md)
 
+* [ROS Essentials](ros/ros_essentials.md)
+
+  * [Turtle Sim](ros/turtlesim.md)
+  * [Packages & Catkin Workspaces](ros/packages.md)
+  * [Write ROS Nodes](ros/write_ros_nodes.md)
+
 * [Path Planning](path_planning/path_planning.md)
 
   * [Continuous Representation](path_planning/continuous_representation.md)

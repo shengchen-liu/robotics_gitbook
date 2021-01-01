@@ -1,0 +1,681 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>ROS Essentials · Robotics learning Notes</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="Shengchen Liu">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-treeview/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-multipart/multipart.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="turtlesim.html" />
+    
+    
+    <link rel="prev" href="../" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://shengchen-liu.github.io/" target="_blank" class="custom-link">Home</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2" data-path="ros_essentials.html">
+            
+                <a href="ros_essentials.html">
+            
+                    
+                    ROS Essentials
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="turtlesim.html">
+            
+                <a href="turtlesim.html">
+            
+                    
+                    Turtle Sim
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="packages.html">
+            
+                <a href="packages.html">
+            
+                    
+                    Packages & Catkin Workspaces
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="write_ros_nodes.html">
+            
+                <a href="write_ros_nodes.html">
+            
+                    
+                    Write ROS Nodes
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../path_planning/path_planning.html">
+            
+                <a href="../path_planning/path_planning.html">
+            
+                    
+                    Path Planning
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../path_planning/continuous_representation.html">
+            
+                <a href="../path_planning/continuous_representation.html">
+            
+                    
+                    Continuous Representation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../path_planning/discrete planning.html">
+            
+                <a href="../path_planning/discrete planning.html">
+            
+                    
+                    Discretization
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.2.1" data-path="../path_planning/roadmap.html">
+            
+                <a href="../path_planning/roadmap.html">
+            
+                    
+                    Roadmap
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.2" data-path="../path_planning/visibility_graph.html">
+            
+                <a href="../path_planning/visibility_graph.html">
+            
+                    
+                    Visibility graph
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.2.2.1" data-path="../path_planning/voronoi.html">
+            
+                <a href="../path_planning/voronoi.html">
+            
+                    
+                    Voronoi Diagram
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.3" data-path="../path_planning/cell_decomposition.html">
+            
+                <a href="../path_planning/cell_decomposition.html">
+            
+                    
+                    Cell Decomposition
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.2.3.1" data-path="../path_planning/exact_cell_decomposition.html">
+            
+                <a href="../path_planning/exact_cell_decomposition.html">
+            
+                    
+                    Exact Cell Decomposition
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.3.2" data-path="../path_planning/approximate_cell_decomposition.html">
+            
+                <a href="../path_planning/approximate_cell_decomposition.html">
+            
+                    
+                    Approximate Cell Decomposition
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.4" data-path="../path_planning/potential_field.html">
+            
+                <a href="../path_planning/potential_field.html">
+            
+                    
+                    Potential Field
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../path_planning/graph_search.html">
+            
+                <a href="../path_planning/graph_search.html">
+            
+                    
+                    Graph Search
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.3.1" data-path="../path_planning/a_star.html">
+            
+                <a href="../path_planning/a_star.html">
+            
+                    
+                    A*
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >ROS Essentials</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <div class="treeview__container"><div class="treeview__container-title"><span class="treeview__main-title">Treeview</span><span class="treeview__copyright">Copyright &#xA9; aleen42 all right reserved, powered by <a href="https://github.com/aleen42" target="_blank">aleen42</a></span></div><ul>
+<li><div><a href="#ros-essentials">ROS Essentials</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#ros-summary">ROS Summary</a><i></i></div></li>
+<li><div><a href="#nodes-and-topics">Nodes and Topics</a><i></i></div></li>
+<li><div><a href="#parameter-server-master">Parameter server (Master)</a><i></i></div></li>
+<li><div><a href="#topics">Topics</a><i></i></div></li>
+<li><div><a href="#message-passing">Message Passing</a><i></i></div></li>
+<li><div><a href="#services">Services</a><i></i></div></li>
+<li><div><a href="#compute-graph">Compute Graph</a><i></i></div></li>
+<li><div><a href="#ros-terminology">ROS Terminology</a><i></i></div></li>
+</ul></li>
+</ul>
+</div>
+
+<h1 id="ros-essentials">ROS Essentials</h1>
+<h2 id="ros-summary">ROS Summary</h2>
+<ol>
+<li>Open source</li>
+<li>Hardware abstraction of device drivers</li>
+<li>Communication via message passing</li>
+<li>Slick build and package management</li>
+<li>Tools for visualization, simulation, analysis</li>
+<li>Powerful software libraries</li>
+</ol>
+<h2 id="nodes-and-topics">Nodes and Topics</h2>
+<p>3 high level steps:</p>
+<ol>
+<li>Perception</li>
+<li>Decision Making</li>
+<li>Actuation</li>
+</ol>
+<p>ROS breaks down the three major steps into separate nodes, for example:</p>
+<p><img src="assets/img1.png" alt=""></p>
+<h2 id="parameter-server-master">Parameter server (Master)</h2>
+<p>Acts as a central repository where nodes on a system can look up parameter values.</p>
+<h2 id="topics">Topics</h2>
+<p>Nodes pass messages to one another via <strong>topics</strong>, which you can think of as a pipe connecting two nodes. Nodes can share data with one another by passing <strong>messages</strong> over <strong>topics</strong>.</p>
+<p>To send a message, a node publish to that topic.</p>
+<p>To receive a message, a node subscribes to a topic.</p>
+<h2 id="message-passing">Message Passing</h2>
+<p>Over pre-defined 200 message types + user-defined types</p>
+<p>For example:</p>
+<p>Physical Quantities: positions, velocities, rotations.</p>
+<p>Sensor Readings: laser scan, images, point clouds</p>
+<h2 id="services">Services</h2>
+<p><strong>Request-Response</strong> type
+Like topics, services allow the passing of messages between nodes.  However, services have <strong>no publishers or subscribers</strong>. Instead, nodes interact with each other one-by-one by using request and response messages.</p>
+<h2 id="compute-graph">Compute Graph</h2>
+<p>An RQT graph</p>
+<h2 id="ros-terminology">ROS Terminology</h2>
+<p><img src="assets/img1.png" alt=""></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Features</th>
+<th>Direction</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Topic</td>
+<td>Asynchronous</td>
+<td>Unidirectional</td>
+<td>Used when exchanging data continuously</td>
+</tr>
+<tr>
+<td>Service</td>
+<td>Synchronous</td>
+<td>Bi-directional</td>
+<td>Used when request processing requests and responds current states</td>
+</tr>
+<tr>
+<td>Action</td>
+<td>Asynchronous</td>
+<td>Bi-directional</td>
+<td>Used when it is difficult to use the service due to long response times after the request or when an intermediate feedback value is needed.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>ROS</strong>
+ ROS provides standard operating system services such as hardware  abstraction, device drivers,implementation of commonly used features  including sensing, recognizing, mapping, motion planning, message  passing between processes, package management, visualizers and libraries for development as well as debugging tools.</p>
+<p><strong>Master</strong>
+ The master 2 acts as a name server for node-to-node connections and  message communication. The command roscore is used to run the master,  and if you run the master, you can register the name of each node and  get information when needed. The connection between nodes and message  communication such as topics and services are impossible without the  master.</p>
+<p><strong>Node</strong>
+ A node 4 refers to the smallest unit of processor running in ROS. Think  of it as one executable program. ROS recommends creating one single node for each purpose, and it is recommended to develop for easy  reusability. For example, in case of mobile robots, the program to  operate the robot is broken down into specialized functions. Specialized node is used for each function such as sensor drive, sensor data  conversion, obstacle recognition, motor drive, encoder input, and navigation<strong>.</strong></p>
+<p><strong>Package</strong>
+ A package 6 is the basic unit of ROS. The ROS application is developed  on a package basis, and the package contains either a configuration file to launch other packages or nodes. 
+<strong>
+**</strong>Metapackage**
+ A metapackage 7 is a set of packages that have a common purpose. For  example, the Navigation metapackage consists of 10 packages including  AMCL, DWA, EKF, and map_server.</p>
+<p><strong>Message</strong>
+ A node 8 sends or receives data between nodes via a message. Messages  are variables such as integer, floating point, and boolean. Nested  message structure that contains another messages or an array of messages can be used in the message.</p>
+<p><strong>Topic</strong>
+ The topic 9 is literally like a topic in a conversation. The publisher  node first registers its topic with the master and then starts  publishing messages on a topic. Subscriber nodes that want to receive  the topic request information of the publisher node corresponding to the name of the topic registered in the master.</p>
+<p><strong>Publish and Publisher</strong>
+ The term &#x2018;publish&#x2019; stands for the action of transmitting  relative messages corresponding to the topic. The publisher node  registers its own information and topic with the master, and sends a  message to connected subscriber nodes that are interested in the same  topic. The publisher is declared in the node and can be declared  multiple times in one node.</p>
+<p><strong>Subscribe and Subscriber</strong>
+ The term &#x2018;subscribe&#x2019; stands for the action of receiving relative messages corresponding to the topic. The subscriber node registers its  own information and topic with the master, and receives publisher  information that publishes relative topic from the master. Based on  received publisher information, the subscriber node directly requests  connection to the publisher node and receives messages from the  connected publisher node. A subscriber is declared in the node and can  be declared multiple times in one node</p>
+<p><strong>Service</strong>
+ The service 10 is synchronous bidirectional communication  between the service client that requests a service regarding a  particular task and the service server that is responsible for  responding to requests.</p>
+<p><strong>Service Server</strong>
+ The &#x2018;service server&#x2019; is a server in the service message  communication that receives a request as an input and transmits a  response as an output. Both request and response are in the form of  messages. Upon the service request, the server performs the designated  service and delivers the result to the service client as a response. The service server is implemented in the node that receives and executes a  given request.</p>
+<p><strong>Service Client</strong>
+ The &#x2018;service client&#x2019; is a client in the service message  communication that requests service to the server and receives a  response as an input. Both request and response are in the form of  message. The client sends a request to the service server and receives  the response. The service client is implemented in the node which  requests specified command and receives results.</p>
+<p><strong>Action</strong>
+ The action 11 is another message communication method used for  an asynchronous bidirectional communication. Action is used where it  takes longer time to respond after receiving a request and intermediate  responses are required until the result is returned. The structure of  action file is also similar to that of service. However, feedback data  section for intermediate response is added along with goal and result  data section which are represented as request and response in service  respectively. There are action client that sets the goal of the action  and action server that performs the action specified by the goal and  returns feedback and result to the action client.</p>
+<p><strong>Action Server</strong>
+ The &#x2018;action server&#x2019; is in charge of receiving goal from the client and  responding with feedback and result. Once the server receives goal from  the client, it performs predefined process.</p>
+<p><strong>Action Client</strong>
+ The &#x2018;action client&#x2019; is in charge of transmitting the goal to the server and receives result or feedback data as inputs from the action  server. The client delivers the goal to the action server, then receives corresponding result or feedback, and transmits follow up instructions  or cancel instruction.</p>
+<p><strong>Parameter</strong>
+ The parameter 12 in ROS refers to parameters used in the node.  Think of it as *.ini configuration files in Windows program. Default  values are set in the parameter and can be read or written if necessary. In particular, it is very useful when configured values can be modified in real-time. For example, you can specify settings such as USB port  number, camera calibration parameters, maximum and minimum values of the motor speed.</p>
+<p><strong>Parameter Server</strong>
+ When parameters are called in the package, they are registered with the parameter server which is loaded in the master.</p>
+<p><strong>Catkin</strong>
+ The catkin 14 refers to the build system of ROS. The build  system basically uses CMake (Cross Platform Make), and the build  environment is described in the &#x2018;CMakeLists.txt&#x2019; file in the
+ package folder. CMake was modified in ROS to create a ROS-specific
+ build system.</p>
+<p><strong>ROS Build</strong>
+ The ROS build (rosbuild) 15 is the build system that was used  before the Catkin build system. Although there are some users who still  use it, this is reserved for compatibility of ROS, therefore, it is  officially not recommended to use. If an old package that only supports  the rosbuild must be used, we recommend using it after converting  rosbuild to catkin.</p>
+<p><strong>roscore</strong> 
+ roscore 16 is the command that runs the ROS master. If multiple  computers are within the same network, it can be run from another  computer in the network. However, except for special case that supports  multiple roscore, only one roscore should be running in the network.  When ROS master is running, the URI address and port number assigned for ROS_MASTER_URI environment variables are used. If the user has not set  the environment variable, the current local IP address is used as the  URI address and port number 11311 is used which is a default port number for the master.</p>
+<p><strong>rosrun</strong>
+ rosrun 17 is the basic execution command of ROS. It is used to run a  single node in the package. The node uses the ROS_HOSTNAME environment  variable stored in the computer on which the node is running as the URI  address, and the port is set to an arbitrary unique value.</p>
+<p><strong>roslaunch</strong>
+ While rosrun is a command to execute a single node, roslaunch 18 in
+ contrast executes multiple nodes. It is a ROS command specialized in  node execution with additional functions such as changing package  parameters or node names, configuring namespace of nodes, setting  ROS_ROOT and ROS_PACKAGE_PATH, and changing environment variables 19  when executing nodes. roslaunch uses the &#x2018;*.launch&#x2019; file to define which nodes to be executed. The file is based on XML (Extensible Markup  Language) and offers a variety of options in the form of XML tags.</p>
+<p><strong>bag</strong>
+ The data from the ROS messages can be recorded. The file format  used is called bag 20 , and &#x2018;*.bag&#x2019; is used as the file extension. In  ROS, bag can be used to record messages and play them back when  necessary to reproduce the environment when messages are recorded. For  example, when performing a robot experiment using a sensor, sensor  values are stored in the message form using the bag. This recorded  message can be repeatedly loaded without performing the same test by  playing the saved bag file. Record and play functions of rosbag are  especially useful when developing an algorithm with frequent program  modifications.</p>
+<p><strong>ROS Wiki</strong>
+ ROS Wiki is a basic description of ROS based on Wiki  (<a href="http://wiki.ros.org/" target="_blank">http://wiki.ros.org/</a>) that explains each package and the features  provided by ROS. This Wiki page describes the basic usage of ROS, a  brief description of each package, parameters used, author, license,  homepage, repository, and tutorial. The ROS Wiki currently has more than 18,800 pages of content.</p>
+<p><strong>Repository</strong>
+An open package specifies repository in the Wiki page. The  repository is a URL address on the web where the package is saved. The  repository manages issues, development, downloads, and other features  using version control systems such as svn, hg, and git. Many of  currently available ROS packages are using GitHub 21 as repositories for source code. In order to view the contents of the source code for each  package, check the corresponding repository.</p>
+<p><strong>Graph</strong>
+ The relationship between nodes, topics, publishers, and  subscribers introduced above can be visualized as a graph. The graphical representation of message communication does not include the service as it only happens one time. The graph can be displayed by running the  &#x2018;rqt_graph&#x2019; node in the &#x2018;rqt_graph&#x2019; package. There are two execution  commands, &#x2018;rqt_graph&#x2019; and &#x2018;rosrun rqt_graph rqt_graph&#x2019;.</p>
+<p><strong>Name</strong>
+ Nodes, parameters, topics, and services all have names 22 .  These names are registered on the master and searched by the name to  transfer messages when using the parameters, topics, and services of  each node. Names are flexible because they can be changed when being  executed, and different names can be assigned when executing identical  nodes, parameters, topics, and services multiple times. Use of names  makes ROS suitable for large-scale projects and complex systems.</p>
+<p><strong>Client Library</strong></p>
+<p> ROS provides development environments for various languages by  using client library 23 in order to reduce the dependency on the  language used. The main client libraries are C++, Python, Lisp,and other languages such as Java, Lua, .NET, EusLisp, and R are also supported.  For this purpose, client libraries such as roscpp, rospy, roslisp,  rosjava, roslua, roscs, roseus, PhaROS, and rosR
+ have been developed.</p>
+<p><strong>URI</strong>
+ A URI (Uniform Resource Identifier) is a unique address that represents a resource on the Internet. The URI is one of basic components that  enables interaction with Internet and is used as an identifier in the  Internet protocol</p>
+<p><strong>MD5</strong>
+ MD5 (Message-Digest algorithm 5) 24 is a 128-bit cryptographic hash  function. It is used primarily to verify data integrity, such as  checking whether programs or files are in its unmodified original form.  The integrity of the message transmission/reception in ROS is verified  with MD5.</p>
+<p><strong>RPC</strong>
+ RPC (Remote Procedure Call) 25 stands for the function that  calls a sub procedure on a remote computer from another computer in the  network. RPC uses protocols such as TCP/IP and IPX, and allows execution of functions or procedures without having the developer to write a  program for remote control</p>
+<p><strong>XML</strong>
+ XML (Extensible Markup Language) is a broad and versatile markup language that W3C recommends for creating other special purpose markup  languages. XML utilizes tags in order to describe the structure of data. In ROS, it is used in various components such as <em>.launch, </em>.urdf, and  package.xml.</p>
+<p><strong>XMLRPC</strong>
+ XMLRPC (XML-Remote Procedure Call) is a type of RPC protocol that uses  XML as the encoding format and uses the request and response method of  the HTTP protocol which does not maintain nor check the connection.  XMLRPC is a very simple protocol, used only to define small data types  or commands. As a result, XMLRPC is very lightweight and supports a  variety of programming languages, making it well suited for ROS, which  supports a variety of hardware and languages.</p>
+<p><strong>TCP/IP</strong>
+ TCP stands for Transmission Control Protocol. It is often called  TCP/IP. The Internet protocol layer guarantees data transmission using  TCP, which is based on the IP (Internet Protocol) layer in the Internet  Protocol Layers. It guarantees the sequential transmission and reception of data.TCPROS is a message format based on TCP/IP and UDPROS is a  message format based on UDP. TCPROS is more frequently used in ROS.</p>
+<p><strong>CMakeLists.txt</strong> 
+ Catkin, which is the build system of ROS, uses CMake by default. The  build environment is specified in the &#x2018;CMakeLists.txt&#x2019; 26 file in each  package folder.</p>
+<p><strong>package.xml</strong>
+ An XML file 27 contains package information that describes the package name, author, license, and dependent packages. </p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../" class="navigation navigation-prev " aria-label="Previous page: Introduction">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="turtlesim.html" class="navigation navigation-next " aria-label="Next page: Turtle Sim">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"ROS Essentials","level":"1.2","depth":1,"next":{"title":"Turtle Sim","level":"1.2.1","depth":2,"path":"ros/turtlesim.md","ref":"ros/turtlesim.md","articles":[]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"plugins":["mathjax","back-to-top-button","code","splitter","page-treeview","multipart"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"page-treeview":{"collapsed":false,"copyright":"Copyright © aleen42","minHeaderCount":"1","minHeaderDeep":"1"},"splitter":{},"search":{},"multipart":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"mathjax":{"forceSVG":false,"version":"2.6-latest"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Shengchen Liu","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Robotics learning Notes","links":{"sidebar":{"Home":"https://shengchen-liu.github.io/"}},"gitbook":"*","description":"A collection of learning notes of Robotics"},"file":{"path":"ros/ros_essentials.md","mtime":"2021-01-01T21:49:04.165Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-01-01T23:03:43.606Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="https://cdn.mathjax.org/mathjax/2.6-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-mathjax/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
