@@ -5,6 +5,7 @@
 * [Path Planning](path_planning/path_planning.md)
 
   * [Continuous Representation](path_planning/continuous_representation.md)
+  
   * [Discretization](path_planning/discrete planning.md)
     * [Roadmap](path_planning/roadmap.md)
   
@@ -18,4 +19,6 @@
   
   * [Graph Search](path_planning/graph_search.md)
   
+    * [A*](path_planning/a_star.md) 
+    
     

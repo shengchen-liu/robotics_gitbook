@@ -77,6 +77,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
+    <link rel="next" href="a_star.html" />
+    
     
     <link rel="prev" href="potential_field.html" />
     
@@ -289,6 +291,25 @@
             
 
             
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.3.1" data-path="a_star.html">
+            
+                <a href="a_star.html">
+            
+                    
+                    A*
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
         </li>
     
 
@@ -363,6 +384,12 @@
 <li>A* Search</li>
 </ul>
 <h2 id="terminology">Terminology</h2>
+<p><strong>Time Complexity</strong></p>
+<p>Assesses how long it takes an algorithm to generate a path, usually with respect to the number of nodes or dimensions present.</p>
+<p><strong>Space Complexity</strong> </p>
+<p>Assesses how much memory it is required to execute the search.  </p>
+<p><strong>Generality</strong></p>
+<p>Considers the type of problems that the algorithm can solve - is it limited to very specific types of problems, or will the algorithm perform well in a broad range of problems?</p>
 
                                 
                                 </section>
@@ -390,10 +417,14 @@
 
             
                 
-                <a href="potential_field.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Potential Field">
+                <a href="potential_field.html" class="navigation navigation-prev " aria-label="Previous page: Potential Field">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
+                
+                <a href="a_star.html" class="navigation navigation-next " aria-label="Next page: A*">
+                    <i class="fa fa-angle-right"></i>
+                </a>
                 
             
         
@@ -402,7 +433,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Graph Search","level":"1.2.3","depth":2,"previous":{"title":"Potential Field","level":"1.2.2.4","depth":3,"path":"path_planning/potential_field.md","ref":"path_planning/potential_field.md","articles":[]},"dir":"ltr"},"config":{"plugins":["mathjax","back-to-top-button","code","splitter","page-treeview","multipart"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"page-treeview":{"collapsed":false,"copyright":"Copyright © aleen42","minHeaderCount":"1","minHeaderDeep":"1"},"splitter":{},"search":{},"multipart":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"mathjax":{"forceSVG":false,"version":"2.6-latest"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Shengchen Liu","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Robotics learning Notes","links":{"sidebar":{"Home":"https://shengchen-liu.github.io/"}},"gitbook":"*","description":"A collection of learning notes of Robotics"},"file":{"path":"path_planning/graph_search.md","mtime":"2020-12-31T22:42:41.525Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-31T22:52:31.636Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Graph Search","level":"1.2.3","depth":2,"next":{"title":"A*","level":"1.2.3.1","depth":3,"path":"path_planning/a_star.md","ref":"path_planning/a_star.md","articles":[]},"previous":{"title":"Potential Field","level":"1.2.2.4","depth":3,"path":"path_planning/potential_field.md","ref":"path_planning/potential_field.md","articles":[]},"dir":"ltr"},"config":{"plugins":["mathjax","back-to-top-button","code","splitter","page-treeview","multipart"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"page-treeview":{"collapsed":false,"copyright":"Copyright © aleen42","minHeaderCount":"1","minHeaderDeep":"1"},"splitter":{},"search":{},"multipart":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"mathjax":{"forceSVG":false,"version":"2.6-latest"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Shengchen Liu","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Robotics learning Notes","links":{"sidebar":{"Home":"https://shengchen-liu.github.io/"}},"gitbook":"*","description":"A collection of learning notes of Robotics"},"file":{"path":"path_planning/graph_search.md","mtime":"2021-01-01T18:30:54.031Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-01-01T19:35:05.079Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
