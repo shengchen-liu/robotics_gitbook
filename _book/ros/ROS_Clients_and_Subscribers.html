@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Write ROS Nodes · Robotics learning Notes</title>
+        <title>ROS Clients and Subscribers · Robotics learning Notes</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -77,10 +77,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="ros_publishers.html" />
+    <link rel="next" href="Look_Away.html" />
     
     
-    <link rel="prev" href="packages.html" />
+    <link rel="prev" href="Arm_Mover_Build.html" />
     
 
     </head>
@@ -171,7 +171,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.2.3" data-path="write_ros_nodes.html">
+        <li class="chapter " data-level="1.2.3" data-path="write_ros_nodes.html">
             
                 <a href="write_ros_nodes.html">
             
@@ -237,7 +237,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.3.5" data-path="ROS_Clients_and_Subscribers.html">
+        <li class="chapter active" data-level="1.2.3.5" data-path="ROS_Clients_and_Subscribers.html">
             
                 <a href="ROS_Clients_and_Subscribers.html">
             
@@ -515,7 +515,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Write ROS Nodes</a>
+        <a href=".." >ROS Clients and Subscribers</a>
     </h1>
 </div>
 
@@ -531,19 +531,33 @@
                                 <section class="normal markdown-section">
                                 
                                 <div class="treeview__container"><div class="treeview__container-title"><span class="treeview__main-title">Treeview</span><span class="treeview__copyright">Copyright &#xA9; aleen42 all right reserved, powered by <a href="https://github.com/aleen42" target="_blank">aleen42</a></span></div><ul>
-<li><div><a href="#write-ros-nodes">Write ROS Nodes</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<li><div><a href="#ros-clients-and-subscribers">ROS Clients and Subscribers</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
 <ul>
-<li><div><a href="#what-this-program-does">What this program does</a><i></i></div></li>
-<li><div><a href="#graph">Graph</a><i></i></div></li>
+<li><div><a href="#ros-clients">ROS Clients</a><i></i></div></li>
+<li><div><a href="#ros-subscribers">ROS Subscribers</a><i></i></div></li>
 </ul></li>
 </ul>
 </div>
 
-<h1 id="write-ros-nodes">Write ROS Nodes</h1>
-<h2 id="what-this-program-does">What this program does</h2>
-<p>Whenever the camera is pointed towards an uninteresting image - in this case, an image with uniform color - the callback function will request a <code>safe_move</code> service to safely move the arm to something more interesting. </p>
-<h2 id="graph">Graph</h2>
-<p><img src="assets/simple_arm.png" alt=""></p>
+<h2 id="ros-clients-and-subscribers">ROS Clients and Subscribers</h2>
+<p>Writing the <code>arm_mover node</code>, you practiced generating custom messages, publishing to a topic, building ROS services servers, setting parameters, and creating launch files. You almost have a complete overview of ROS, but you still have to learn ROS <strong>clients</strong> to request services from client nodes, as well as ROS <strong>subscribers</strong>.</p>
+<h3 id="ros-clients">ROS Clients</h3>
+<p>A service client defined inside a service client node can request services from a service server node. In C++, ROS clients frequently have the following format, although other parameters and arguments are possible:</p>
+<pre><code class="lang-C++">ros::ServiceClient client = n.serviceClient&lt;package_name::service_file_name&gt;(<span class="hljs-string">&quot;service_name&quot;</span>);
+</code></pre>
+<p>The <code>client</code> object is instantiated from the ros::ServiceClient class. This object allows you to request services by calling the <code>client.call()</code> function.</p>
+<p>To communicate with the ROS Master in C++, you need a <strong>NodeHandle</strong>. The node handle <code>n</code> will initialize the node.</p>
+<p>The <code>package_name::service_file_name</code> indicates the name of the service file located in the <code>srv</code> directory of the package.</p>
+<p>The <code>service_name</code> argument indicates the name of the service which is defined in the service server node.</p>
+<h3 id="ros-subscribers">ROS Subscribers</h3>
+<p>A subscriber enables your node to read messages from a topic, allowing useful data to be streamed to the node. In C++, ROS subscribers frequently have the following format, although other parameters and arguments are possible:</p>
+<pre><code class="lang-C++">ros::Subscriber sub1 = n.subscribe(<span class="hljs-string">&quot;/topic_name&quot;</span>, queue_size, callback_function);
+</code></pre>
+<p>The <code>sub1</code> object is a subscriber object instantiated from the ros::Subscriber class. This object allows you to subscribe to messages by calling the <code>subscribe()</code> function.</p>
+<p>To communicate with the ROS Master in C++, you need a <strong>NodeHandle</strong>. The node handle <code>n</code> will initialize the node.</p>
+<p>The <code>&quot;/topic_name&quot;</code> indicates the topic to which the Subscriber should listen.</p>
+<p>The <code>queue_size</code> determines the number of messages that can be stored in a queue. If the number of messages published exceeds the size of the queue, the oldest messages are dropped. As an example, if the <code>queue_size</code> is set to 100 and the number of messages stored in the queue is equal to 100, we will have to start deleting old messages to make room in the queue for new messages. This means that we are unable to process messages fast enough and we probably need to increase the <code>queue_size</code>.</p>
+<p>The <code>callback_function</code> is the name of the function that will be run each incoming message. Each time a message arrives, it is passed as an argument to <code>callback_function</code>. Typically, this function performs a useful action with the incoming data. Note that unlike service handler functions, the <code>callback_function</code> is not required to return anything.</p>
 
                                 
                                 </section>
@@ -571,12 +585,12 @@
 
             
                 
-                <a href="packages.html" class="navigation navigation-prev " aria-label="Previous page: Packages & Catkin Workspaces">
+                <a href="Arm_Mover_Build.html" class="navigation navigation-prev " aria-label="Previous page: Arm Mover Build, Launch and Interact">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="ros_publishers.html" class="navigation navigation-next " aria-label="Next page: ROS Publishers">
+                <a href="Look_Away.html" class="navigation navigation-next " aria-label="Next page: Look Away">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -587,7 +601,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Write ROS Nodes","level":"1.2.3","depth":2,"next":{"title":"ROS Publishers","level":"1.2.3.1","depth":3,"path":"ros/ros_publishers.md","ref":"ros/ros_publishers.md","articles":[]},"previous":{"title":"Packages & Catkin Workspaces","level":"1.2.2","depth":2,"path":"ros/packages.md","ref":"ros/packages.md","articles":[]},"dir":"ltr"},"config":{"plugins":["mathjax","back-to-top-button","code","splitter","page-treeview","multipart"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"page-treeview":{"collapsed":false,"copyright":"Copyright © aleen42","minHeaderCount":"1","minHeaderDeep":"1"},"splitter":{},"search":{},"multipart":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"mathjax":{"forceSVG":false,"version":"2.6-latest"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Shengchen Liu","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Robotics learning Notes","links":{"sidebar":{"Home":"https://shengchen-liu.github.io/"}},"gitbook":"*","description":"A collection of learning notes of Robotics"},"file":{"path":"ros/write_ros_nodes.md","mtime":"2021-01-03T00:53:38.163Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-01-03T01:00:42.941Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"ROS Clients and Subscribers","level":"1.2.3.5","depth":3,"next":{"title":"Look Away","level":"1.2.3.6","depth":3,"path":"ros/Look_Away.md","ref":"ros/Look_Away.md","articles":[]},"previous":{"title":"Arm Mover Build, Launch and Interact","level":"1.2.3.4","depth":3,"path":"ros/Arm_Mover_Build.md","ref":"ros/Arm_Mover_Build.md","articles":[]},"dir":"ltr"},"config":{"plugins":["mathjax","back-to-top-button","code","splitter","page-treeview","multipart"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"page-treeview":{"collapsed":false,"copyright":"Copyright © aleen42","minHeaderCount":"1","minHeaderDeep":"1"},"splitter":{},"search":{},"multipart":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"mathjax":{"forceSVG":false,"version":"2.6-latest"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Shengchen Liu","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Robotics learning Notes","links":{"sidebar":{"Home":"https://shengchen-liu.github.io/"}},"gitbook":"*","description":"A collection of learning notes of Robotics"},"file":{"path":"ros/ROS_Clients_and_Subscribers.md","mtime":"2021-01-03T00:37:24.878Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-01-03T01:00:42.941Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

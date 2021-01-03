@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Write ROS Nodes · Robotics learning Notes</title>
+        <title>Look Away · Robotics learning Notes</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -77,10 +77,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="ros_publishers.html" />
+    <link rel="next" href="Look_Away_Build.html" />
     
     
-    <link rel="prev" href="packages.html" />
+    <link rel="prev" href="ROS_Clients_and_Subscribers.html" />
     
 
     </head>
@@ -171,7 +171,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.2.3" data-path="write_ros_nodes.html">
+        <li class="chapter " data-level="1.2.3" data-path="write_ros_nodes.html">
             
                 <a href="write_ros_nodes.html">
             
@@ -250,7 +250,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.3.6" data-path="Look_Away.html">
+        <li class="chapter active" data-level="1.2.3.6" data-path="Look_Away.html">
             
                 <a href="Look_Away.html">
             
@@ -515,7 +515,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Write ROS Nodes</a>
+        <a href=".." >Look Away</a>
     </h1>
 </div>
 
@@ -531,19 +531,33 @@
                                 <section class="normal markdown-section">
                                 
                                 <div class="treeview__container"><div class="treeview__container-title"><span class="treeview__main-title">Treeview</span><span class="treeview__copyright">Copyright &#xA9; aleen42 all right reserved, powered by <a href="https://github.com/aleen42" target="_blank">aleen42</a></span></div><ul>
-<li><div><a href="#write-ros-nodes">Write ROS Nodes</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<li><div><a href="#look-away">Look Away</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
 <ul>
-<li><div><a href="#what-this-program-does">What this program does</a><i></i></div></li>
-<li><div><a href="#graph">Graph</a><i></i></div></li>
+<li><div><a href="#updating-the-launch-file">Updating the launch file</a><i></i></div></li>
+<li><a href="#"></a></li>
 </ul></li>
 </ul>
 </div>
 
-<h1 id="write-ros-nodes">Write ROS Nodes</h1>
-<h2 id="what-this-program-does">What this program does</h2>
-<p>Whenever the camera is pointed towards an uninteresting image - in this case, an image with uniform color - the callback function will request a <code>safe_move</code> service to safely move the arm to something more interesting. </p>
-<h2 id="graph">Graph</h2>
-<p><img src="assets/simple_arm.png" alt=""></p>
+<h1 id="look-away">Look Away</h1>
+<p>To see a ROS <strong>subscriber</strong> and <strong>client</strong> in action, you&apos;ll write a node called <code>look_away</code>. The <code>look_away</code> node will subscribe to the <code>/rgb_camera/image_raw</code> topic, which has image data from the camera mounted on the end of the robotic arm. Whenever the camera is pointed towards an uninteresting image - in this case, an image with uniform color - the callback function will request a <code>safe_move</code> service to safely move the arm to something more interesting. There are a few extra pieces in the code to ensure that this procedure is executed smoothly, but we&#x2019;ll focus on those later.</p>
+<h2 id="updating-the-launch-file">Updating the launch file</h2>
+<p>Just as you did with the <code>arm_mover</code> node, to get <code>look_away</code> to launch with the rest of the nodes, you will need to modify <code>robot_spawn.launch</code>, which can be found in <code>/home/workspace/catkin_ws/src/simple_arm/launch</code>. You can add the following code there:</p>
+<pre><code class="lang-xml">  <span class="hljs-comment">&lt;!-- The look away node --&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">node</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;look_away&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;look_away&quot;</span> <span class="hljs-attr">pkg</span>=<span class="hljs-string">&quot;simple_arm&quot;</span>/&gt;</span>
+</code></pre>
+<p>Remember that a half turn of a joint requires pi/2 radians of revolution. Numerically, pi/2 is approximately 1.57. Since we want to be able to revolve a joint halfway around with one request, it will be helpful to set <code>max_joint_2_angle: 1.57</code> in <code>arm_mover</code>:</p>
+<pre><code class="lang-xml">  <span class="hljs-comment">&lt;!-- The arm mover node --&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">node</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;arm_mover&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;arm_mover&quot;</span> <span class="hljs-attr">pkg</span>=<span class="hljs-string">&quot;simple_arm&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">rosparam</span>&gt;</span>
+      min_joint_1_angle: 0
+      max_joint_1_angle: 1.57
+      min_joint_2_angle: 0
+      max_joint_2_angle: 1.57
+    <span class="hljs-tag">&lt;/<span class="hljs-name">rosparam</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">node</span>&gt;</span>
+</code></pre>
+<h2 id=""> </h2>
 
                                 
                                 </section>
@@ -571,12 +585,12 @@
 
             
                 
-                <a href="packages.html" class="navigation navigation-prev " aria-label="Previous page: Packages & Catkin Workspaces">
+                <a href="ROS_Clients_and_Subscribers.html" class="navigation navigation-prev " aria-label="Previous page: ROS Clients and Subscribers">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="ros_publishers.html" class="navigation navigation-next " aria-label="Next page: ROS Publishers">
+                <a href="Look_Away_Build.html" class="navigation navigation-next " aria-label="Next page: Look Away: Build, Launch and Interact">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -587,7 +601,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Write ROS Nodes","level":"1.2.3","depth":2,"next":{"title":"ROS Publishers","level":"1.2.3.1","depth":3,"path":"ros/ros_publishers.md","ref":"ros/ros_publishers.md","articles":[]},"previous":{"title":"Packages & Catkin Workspaces","level":"1.2.2","depth":2,"path":"ros/packages.md","ref":"ros/packages.md","articles":[]},"dir":"ltr"},"config":{"plugins":["mathjax","back-to-top-button","code","splitter","page-treeview","multipart"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"page-treeview":{"collapsed":false,"copyright":"Copyright © aleen42","minHeaderCount":"1","minHeaderDeep":"1"},"splitter":{},"search":{},"multipart":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"mathjax":{"forceSVG":false,"version":"2.6-latest"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Shengchen Liu","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Robotics learning Notes","links":{"sidebar":{"Home":"https://shengchen-liu.github.io/"}},"gitbook":"*","description":"A collection of learning notes of Robotics"},"file":{"path":"ros/write_ros_nodes.md","mtime":"2021-01-03T00:53:38.163Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-01-03T01:00:42.941Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Look Away","level":"1.2.3.6","depth":3,"next":{"title":"Look Away: Build, Launch and Interact","level":"1.2.3.7","depth":3,"path":"ros/Look_Away_Build.md","ref":"ros/Look_Away_Build.md","articles":[]},"previous":{"title":"ROS Clients and Subscribers","level":"1.2.3.5","depth":3,"path":"ros/ROS_Clients_and_Subscribers.md","ref":"ros/ROS_Clients_and_Subscribers.md","articles":[]},"dir":"ltr"},"config":{"plugins":["mathjax","back-to-top-button","code","splitter","page-treeview","multipart"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"page-treeview":{"collapsed":false,"copyright":"Copyright © aleen42","minHeaderCount":"1","minHeaderDeep":"1"},"splitter":{},"search":{},"multipart":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"mathjax":{"forceSVG":false,"version":"2.6-latest"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Shengchen Liu","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Robotics learning Notes","links":{"sidebar":{"Home":"https://shengchen-liu.github.io/"}},"gitbook":"*","description":"A collection of learning notes of Robotics"},"file":{"path":"ros/Look_Away.md","mtime":"2021-01-03T00:41:14.479Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-01-03T01:00:42.941Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Write ROS Nodes · Robotics learning Notes</title>
+        <title>Arm Mover Build, Launch and Interact · Robotics learning Notes</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -77,10 +77,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="ros_publishers.html" />
+    <link rel="next" href="ROS_Clients_and_Subscribers.html" />
     
     
-    <link rel="prev" href="packages.html" />
+    <link rel="prev" href="arm_mover.html" />
     
 
     </head>
@@ -171,7 +171,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.2.3" data-path="write_ros_nodes.html">
+        <li class="chapter " data-level="1.2.3" data-path="write_ros_nodes.html">
             
                 <a href="write_ros_nodes.html">
             
@@ -224,7 +224,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.3.4" data-path="Arm_Mover_Build.html">
+        <li class="chapter active" data-level="1.2.3.4" data-path="Arm_Mover_Build.html">
             
                 <a href="Arm_Mover_Build.html">
             
@@ -515,7 +515,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Write ROS Nodes</a>
+        <a href=".." >Arm Mover Build, Launch and Interact</a>
     </h1>
 </div>
 
@@ -531,19 +531,81 @@
                                 <section class="normal markdown-section">
                                 
                                 <div class="treeview__container"><div class="treeview__container-title"><span class="treeview__main-title">Treeview</span><span class="treeview__copyright">Copyright &#xA9; aleen42 all right reserved, powered by <a href="https://github.com/aleen42" target="_blank">aleen42</a></span></div><ul>
-<li><div><a href="#write-ros-nodes">Write ROS Nodes</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<li><div><a href="#arm-mover-build-launch-and-interact">Arm Mover: Build, Launch and Interact</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
 <ul>
-<li><div><a href="#what-this-program-does">What this program does</a><i></i></div></li>
-<li><div><a href="#graph">Graph</a><i></i></div></li>
+<li><div><a href="#modifying-cmakeliststxt">Modifying CMakeLists.txt</a><i></i></div></li>
+<li><div><a href="#building-the-package">Building the package</a><i></i></div></li>
+<li><div><a href="#launching-the-project-with-the-new-service">Launching the project with the new service</a><i></i></div></li>
+<li><div><a href="#testing-the-new-service">Testing the new service</a><i></i></div></li>
+<li><div><a href="#adjusting-the-view">Adjusting the view</a><i></i></div></li>
 </ul></li>
 </ul>
 </div>
 
-<h1 id="write-ros-nodes">Write ROS Nodes</h1>
-<h2 id="what-this-program-does">What this program does</h2>
-<p>Whenever the camera is pointed towards an uninteresting image - in this case, an image with uniform color - the callback function will request a <code>safe_move</code> service to safely move the arm to something more interesting. </p>
-<h2 id="graph">Graph</h2>
-<p><img src="assets/simple_arm.png" alt=""></p>
+<h1 id="arm-mover-build-launch-and-interact">Arm Mover: Build, Launch and Interact</h1>
+<h2 id="modifying-cmakeliststxt">Modifying CMakeLists.txt</h2>
+<p>Before compiling the <code>arm_mover.cpp</code> code, you have to include instructions for the compiler. To do so, open the <code>simple_arm</code> package <code>CMakeLists.txt</code> file located in <code>/home/workspace/catkin_ws/src/simple_arm/</code>, and add the following instructions at the bottom of the file:</p>
+<pre><code class="lang-html">add_executable(arm_mover src/arm_mover.cpp)
+target_link_libraries(arm_mover ${catkin_LIBRARIES})
+add_dependencies(arm_mover simple_arm_generate_messages_cpp)
+</code></pre>
+<h2 id="building-the-package">Building the package</h2>
+<p>Now that you&#x2019;ve written the <code>arm_mover</code> C++ script, and included specific instructions for your compiler, let&#x2019;s build the package:</p>
+<pre><code class="lang-sh">$ <span class="hljs-built_in">cd</span> /home/workspace/catkin_ws/
+$ catkin_make
+</code></pre>
+<h2 id="launching-the-project-with-the-new-service">Launching the project with the new service</h2>
+<p>To get the <code>arm_mover</code> node, and accompanying <code>safe_move</code> service, to launch along with all of the other nodes, modify <code>robot_spawn.launch</code>.</p>
+<p>Launch files, when they exist, are located within the <code>launch</code> directory in the root of a catkin package. Inside a launch file, you can instruct ROS Master which nodes to run. Also you can specify certain parameters and arguments for each of your nodes. Thus, a launch file is necessary inside a ROS package containing more than one node or a node with multiple parameters and arguments. This launch file can run all the nodes within a single command: <code>roslaunch package_name launch_file.launch</code>. <code>simple_arm</code>&#x2019;s launch file is located in <code>/home/workspace/catkin_ws/src/simple_arm/launch</code></p>
+<p>To get the <code>arm_mover</code> node to launch, add the following:</p>
+<pre><code class="lang-xml">  <span class="hljs-comment">&lt;!-- The arm mover node --&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">node</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;arm_mover&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;arm_mover&quot;</span> <span class="hljs-attr">pkg</span>=<span class="hljs-string">&quot;simple_arm&quot;</span> <span class="hljs-attr">output</span>=<span class="hljs-string">&quot;screen&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">rosparam</span>&gt;</span>
+      min_joint_1_angle: 0
+      max_joint_1_angle: 1.57
+      min_joint_2_angle: 0
+      max_joint_2_angle: 1.0
+    <span class="hljs-tag">&lt;/<span class="hljs-name">rosparam</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">node</span>&gt;</span>
+</code></pre>
+<p>Inside the launch file, the node tag specifies the name, type, package name and output channel. The ROS parameters specify the min and max joint angles. More information on the format of the launch file can be found on the <a href="http://wiki.ros.org/roslaunch/XML" target="_blank">XML page of the ROS wiki</a>.</p>
+<h2 id="testing-the-new-service">Testing the new service</h2>
+<p>Now that you&apos;ve built your code and modified the launch file, you are ready to test it all out.</p>
+<p>Launch the <code>simple_arm</code>, verify that the <code>arm_mover</code> node is running and that the <code>safe_move</code> service is listed:</p>
+<p><strong>Note:</strong> You will need to make sure that you&apos;ve exited your previous <code>roslaunch</code> session before re-launching.</p>
+<pre><code class="lang-sh">$ <span class="hljs-built_in">cd</span> /home/workspace/catkin_ws/
+$ <span class="hljs-built_in">source</span> devel/setup.bash
+$ roslaunch simple_arm robot_spawn.launch
+</code></pre>
+<p>Then, in a new terminal, verify that the node and service have indeed launched.</p>
+<pre><code class="lang-sh">$ rosnode list
+$ rosservice list
+</code></pre>
+<p>Check that both the service (<code>/arm_mover/safe_move</code>) and the node (<code>/arm_mover</code>) show up as expected. If they do not appear, check the logs in the <code>roscore</code> console. You can now interact with the service using <code>rosservice</code>.</p>
+<p>To view the camera image stream, you can use the command <code>rqt_image_view</code> (you can learn more about rqt and the associated tools on the <a href="http://wiki.ros.org/rqt" target="_blank">RQT page of the ROS wiki</a>):</p>
+<pre><code class="lang-sh">$ rqt_image_view /rgb_camera/image_raw
+</code></pre>
+<p><a href="https://classroom.udacity.com/nanodegrees/nd209/parts/1f349ee0-9c40-4964-a6a8-4e0818a15fde/modules/d0fbb2f2-55d1-4217-8116-a52ac989c07f/lessons/e007bba9-c618-4709-9afd-2dc976d401cb/concepts/22dd55da-b30a-4938-8d7d-b91c44d957c4#" target="_blank"><img src="https://video.udacity-data.com/topher/2018/November/5bdb8627_rqtimage/rqtimage.png" alt="img"></a></p>
+<h2 id="adjusting-the-view">Adjusting the view</h2>
+<p>The camera is displaying a gray image. This is to be expected, given that it is pointing straight up, towards the gray sky of our Gazebo world.</p>
+<p>To point the camera towards the numbered blocks on the countertop, we need to rotate both joint 1 and joint 2 by approximately pi/2 radians. Let&#x2019;s give that a try:</p>
+<pre><code class="lang-sh">$ <span class="hljs-built_in">cd</span> /home/workspace/catkin_ws/
+$ <span class="hljs-built_in">source</span> devel/setup.bash
+$ rosservice call /arm_mover/safe_move <span class="hljs-string">&quot;joint_1: 1.57 
+joint_2: 1.57&quot;</span>
+</code></pre>
+<p>Note: <code>rosservice call</code> can tab-complete the request message, so that you don&#x2019;t have to worry about writing it out by hand. Also, be sure to include a line break between the two joint parameters.</p>
+<p>Upon entering the command, you should see the arm move and eventually stop, reporting the new joint clamped angles to the console. This is as expected.</p>
+<p>What was not expected was the resulting position of the arm. Looking at the <code>roscore</code> console, we can see the problem. The requested angle for joint 2 was out of the safe bounds, so it was clamped. We requested 1.57 radians, but the maximum joint angle was set to 1.0 radians.</p>
+<p>By setting the <code>max_joint_2_angle</code> on the parameter server, we should be able to increase joint 2&#x2019;s maximum angle and bring the blocks into view the next time we request a service. To update that parameter, use the command <code>rosparam</code></p>
+<pre><code class="lang-sh">$ rosparam <span class="hljs-built_in">set</span> /arm_mover/max_joint_2_angle 1.57
+</code></pre>
+<p>Now we should be able to move the arm such that all of the blocks are within the field of view of the camera:</p>
+<pre><code class="lang-sh">$ rosservice call /arm_mover/safe_move <span class="hljs-string">&quot;joint_1: 1.57
+joint_2: 1.57&quot;</span>
+</code></pre>
+<p><a href="https://classroom.udacity.com/nanodegrees/nd209/parts/1f349ee0-9c40-4964-a6a8-4e0818a15fde/modules/d0fbb2f2-55d1-4217-8116-a52ac989c07f/lessons/e007bba9-c618-4709-9afd-2dc976d401cb/concepts/22dd55da-b30a-4938-8d7d-b91c44d957c4#" target="_blank"><img src="https://video.udacity-data.com/topher/2018/November/5bdb8639_camerablocks/camerablocks.png" alt="img"></a></p>
+<p>And there you have it. All of the blocks are within the field of view!</p>
 
                                 
                                 </section>
@@ -571,12 +633,12 @@
 
             
                 
-                <a href="packages.html" class="navigation navigation-prev " aria-label="Previous page: Packages & Catkin Workspaces">
+                <a href="arm_mover.html" class="navigation navigation-prev " aria-label="Previous page: Arm Mover">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="ros_publishers.html" class="navigation navigation-next " aria-label="Next page: ROS Publishers">
+                <a href="ROS_Clients_and_Subscribers.html" class="navigation navigation-next " aria-label="Next page: ROS Clients and Subscribers">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -587,7 +649,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Write ROS Nodes","level":"1.2.3","depth":2,"next":{"title":"ROS Publishers","level":"1.2.3.1","depth":3,"path":"ros/ros_publishers.md","ref":"ros/ros_publishers.md","articles":[]},"previous":{"title":"Packages & Catkin Workspaces","level":"1.2.2","depth":2,"path":"ros/packages.md","ref":"ros/packages.md","articles":[]},"dir":"ltr"},"config":{"plugins":["mathjax","back-to-top-button","code","splitter","page-treeview","multipart"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"page-treeview":{"collapsed":false,"copyright":"Copyright © aleen42","minHeaderCount":"1","minHeaderDeep":"1"},"splitter":{},"search":{},"multipart":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"mathjax":{"forceSVG":false,"version":"2.6-latest"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Shengchen Liu","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Robotics learning Notes","links":{"sidebar":{"Home":"https://shengchen-liu.github.io/"}},"gitbook":"*","description":"A collection of learning notes of Robotics"},"file":{"path":"ros/write_ros_nodes.md","mtime":"2021-01-03T00:53:38.163Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-01-03T01:00:42.941Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Arm Mover Build, Launch and Interact","level":"1.2.3.4","depth":3,"next":{"title":"ROS Clients and Subscribers","level":"1.2.3.5","depth":3,"path":"ros/ROS_Clients_and_Subscribers.md","ref":"ros/ROS_Clients_and_Subscribers.md","articles":[]},"previous":{"title":"Arm Mover","level":"1.2.3.3","depth":3,"path":"ros/arm_mover.md","ref":"ros/arm_mover.md","articles":[]},"dir":"ltr"},"config":{"plugins":["mathjax","back-to-top-button","code","splitter","page-treeview","multipart"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"page-treeview":{"collapsed":false,"copyright":"Copyright © aleen42","minHeaderCount":"1","minHeaderDeep":"1"},"splitter":{},"search":{},"multipart":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"mathjax":{"forceSVG":false,"version":"2.6-latest"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Shengchen Liu","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Robotics learning Notes","links":{"sidebar":{"Home":"https://shengchen-liu.github.io/"}},"gitbook":"*","description":"A collection of learning notes of Robotics"},"file":{"path":"ros/Arm_Mover_Build.md","mtime":"2021-01-03T00:29:52.245Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-01-03T01:00:42.941Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

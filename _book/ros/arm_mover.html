@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Write ROS Nodes · Robotics learning Notes</title>
+        <title>Arm Mover · Robotics learning Notes</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -77,10 +77,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="ros_publishers.html" />
+    <link rel="next" href="Arm_Mover_Build.html" />
     
     
-    <link rel="prev" href="packages.html" />
+    <link rel="prev" href="node_simple_mover.html" />
     
 
     </head>
@@ -171,7 +171,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.2.3" data-path="write_ros_nodes.html">
+        <li class="chapter " data-level="1.2.3" data-path="write_ros_nodes.html">
             
                 <a href="write_ros_nodes.html">
             
@@ -211,7 +211,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.3.3" data-path="arm_mover.html">
+        <li class="chapter active" data-level="1.2.3.3" data-path="arm_mover.html">
             
                 <a href="arm_mover.html">
             
@@ -515,7 +515,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Write ROS Nodes</a>
+        <a href=".." >Arm Mover</a>
     </h1>
 </div>
 
@@ -531,19 +531,101 @@
                                 <section class="normal markdown-section">
                                 
                                 <div class="treeview__container"><div class="treeview__container-title"><span class="treeview__main-title">Treeview</span><span class="treeview__copyright">Copyright &#xA9; aleen42 all right reserved, powered by <a href="https://github.com/aleen42" target="_blank">aleen42</a></span></div><ul>
-<li><div><a href="#write-ros-nodes">Write ROS Nodes</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<li><div><a href="#arm-mover">Arm Mover</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
 <ul>
-<li><div><a href="#what-this-program-does">What this program does</a><i></i></div></li>
-<li><div><a href="#graph">Graph</a><i></i></div></li>
+<li><div><a href="#description-of-arm-mover">Description of Arm Mover</a><i></i></div></li>
+<li><div><a href="#creating-a-new-service-definition">Creating a new service definition</a><i></i></div></li>
+<li><div><a href="#modifying-cmakeliststxt">Modifying CMakeLists.txt</a><i></i></div></li>
+<li><div><a href="#modifying-packagexml">Modifying package.xml</a><i></i></div></li>
+<li><div><a href="#checking-service-with-ros">Checking Service with ROS</a><i></i></div></li>
 </ul></li>
 </ul>
 </div>
 
-<h1 id="write-ros-nodes">Write ROS Nodes</h1>
-<h2 id="what-this-program-does">What this program does</h2>
-<p>Whenever the camera is pointed towards an uninteresting image - in this case, an image with uniform color - the callback function will request a <code>safe_move</code> service to safely move the arm to something more interesting. </p>
-<h2 id="graph">Graph</h2>
-<p><img src="assets/simple_arm.png" alt=""></p>
+<h1 id="arm-mover">Arm Mover</h1>
+<p>You&#x2019;ve written your first ROS C++ node! This was no trivial task. You&#x2019;ve had to learn quite a few things to get to this point.</p>
+<p>But before we rush off, we have more ground to cover:</p>
+<ul>
+<li>Custom message generation</li>
+<li>Services</li>
+<li>Parameters</li>
+<li>Launch Files</li>
+</ul>
+<p>In order to gain an understanding of the above, you will write another node called <code>arm_mover</code>.</p>
+<h2 id="description-of-arm-mover">Description of Arm Mover</h2>
+<p>In many respects, <code>arm_mover</code> is quite similar to <code>simple_mover</code>. Like <code>simple_mover</code>, it is responsible for commanding the arm to move. However, instead of simply commanding the arm to follow a predetermined trajectory, the <code>arm_mover</code> node provides the service <code>safe_move</code>, which allows other nodes in the system to send <code>movement_commands</code>.</p>
+<p>In addition to allowing movements via a service interface, <code>arm_mover</code> also allows for configurable minimum and maximum joint angles, by using parameters.</p>
+<h2 id="creating-a-new-service-definition">Creating a new service definition</h2>
+<p>An interaction with a service consists of two messages. A node passes a request message to the service, and the service returns a response message to the node. The definitions of the request and response message types are contained within .srv files living in the <code>srv</code> directory under the package&#x2019;s root.</p>
+<p>Let&#x2019;s define a new service for <code>simple_arm</code>. We shall call it <code>GoToPosition</code>.</p>
+<pre><code class="lang-shell">$ cd /home/workspace/catkin_ws/src/simple_arm/
+$ mkdir srv
+$ cd srv
+$ gedit GoToPosition.srv
+</code></pre>
+<p>You should now edit <code>GoToPosition.srv</code> with gedit, so it contains the following:</p>
+<pre><code class="lang-text">float64 joint_1
+float64 joint_2
+---
+string msg_feedback
+</code></pre>
+<p>Service definitions always contain two sections, separated by a &#x2018;---&#x2019; line. </p>
+<p><strong>The first section is the definition of the request message</strong>. Here, a request consists of two float64 fields, one for each of <code>simple_arm</code>&#x2019;s joints. </p>
+<p><strong>The second section contains the service response.</strong> The response contains only a single field, msg_feedback. The <code>msg_feedback</code> field is of type string, and is responsible for indicating that the arm has moved to a new position.</p>
+<p><strong>Note: Defining a custom message type is very similar.</strong> The only differences is that message definitions live within the <code>msg</code> directory of the package root, have a <code>.msg</code> extension, and do not contain the <code>---</code> section divider. You can find more detailed information on creating <a href="http://wiki.ros.org/msg" target="_blank">messages</a> and <a href="http://wiki.ros.org/srv" target="_blank">services</a> on the ROS wiki.</p>
+<h2 id="modifying-cmakeliststxt">Modifying CMakeLists.txt</h2>
+<p>As a reminder, in order for catkin to generate the C++ libraries which allow you to utilize messages in your code you must modify <code>simple_arm</code>&#x2019;s <code>CMakeLists.txt</code> file. You can find this file in <code>/home/workspace/catkin_ws/src/simple_arm/</code>.</p>
+<p>First, uncomment the <code>add_service_files()</code> macro so it looks like this:</p>
+<pre><code class="lang-text">add_service_files(
+   FILES
+   GoToPosition.srv
+)
+</code></pre>
+<p>This tells catkin to add the newly created service file.</p>
+<p>Then, make sure that the <code>generate_messages()</code> macro is uncommented:</p>
+<pre><code class="lang-text">generate_messages(
+   DEPENDENCIES
+   std_msgs  # Or other packages containing msgs
+)
+</code></pre>
+<p>This macro is actually responsible for generating the code.</p>
+<p>To force ROS to compile your C++ code with C++ 11 include this line of code:</p>
+<pre><code class="lang-text">add_compile_options(-std=c++11)
+</code></pre>
+<h2 id="modifying-packagexml">Modifying package.xml</h2>
+<p>Now that you have updated the <code>CMakeLists.txt</code> file, there&#x2019;s one more file which needs to be modified: <code>package.xml</code>.</p>
+<p><code>package.xml</code> is responsible for defining many of the package&#x2019;s properties, such as the name of the package, version numbers, authors, maintainers, and dependencies.</p>
+<p>Right now, we&#x2019;ll focus on the dependencies. You already learned about build-time dependencies and run-time package dependencies. When <code>rosdep</code> is searching for these dependencies, it&#x2019;s the <code>package.xml</code> file that is being parsed. So make sure that the <code>message_generation</code> build dependency and the <code>message_runtime</code> run dependency exist in <code>package.xml</code>.</p>
+<pre><code class="lang-html">  <span class="hljs-tag">&lt;<span class="hljs-name">buildtool_depend</span>&gt;</span>catkin<span class="hljs-tag">&lt;/<span class="hljs-name">buildtool_depend</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">build_depend</span>&gt;</span>message_generation<span class="hljs-tag">&lt;/<span class="hljs-name">build_depend</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">run_depend</span>&gt;</span>controller_manager<span class="hljs-tag">&lt;/<span class="hljs-name">run_depend</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">run_depend</span>&gt;</span>effort_controllers<span class="hljs-tag">&lt;/<span class="hljs-name">run_depend</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">run_depend</span>&gt;</span>gazebo_plugins<span class="hljs-tag">&lt;/<span class="hljs-name">run_depend</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">run_depend</span>&gt;</span>gazebo_ros<span class="hljs-tag">&lt;/<span class="hljs-name">run_depend</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">run_depend</span>&gt;</span>gazebo_ros_control<span class="hljs-tag">&lt;/<span class="hljs-name">run_depend</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">run_depend</span>&gt;</span>joint_state_controller<span class="hljs-tag">&lt;/<span class="hljs-name">run_depend</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">run_depend</span>&gt;</span>joint_state_publisher<span class="hljs-tag">&lt;/<span class="hljs-name">run_depend</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">run_depend</span>&gt;</span>robot_state_publisher<span class="hljs-tag">&lt;/<span class="hljs-name">run_depend</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">run_depend</span>&gt;</span>message_runtime<span class="hljs-tag">&lt;/<span class="hljs-name">run_depend</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">run_depend</span>&gt;</span>xacro<span class="hljs-tag">&lt;/<span class="hljs-name">run_depend</span>&gt;</span>
+</code></pre>
+<p>For more information about <code>package.xml</code>, check out the <a href="http://wiki.ros.org/catkin/package.xml" target="_blank">ROS Wiki</a>.</p>
+<h2 id="checking-service-with-ros">Checking Service with ROS</h2>
+<p>Now that you&#x2019;ve created your <code>GoToPosition</code> service file, let&apos;s make sure that ROS can see it using the <code>rossrv show</code> command:</p>
+<pre><code class="lang-sh">$ <span class="hljs-built_in">cd</span> /home/workspace/catkin_ws/
+$ <span class="hljs-built_in">source</span> devel/setup.bash
+$ rossrv show GoToPosition
+</code></pre>
+<p>You will see:</p>
+<pre><code class="lang-text">[simple_arm/GoToPosition]:
+float64 joint_1
+float64 joint_2
+---
+string msg_feedback
+</code></pre>
+<p>This indicates that ROS can see your service.</p>
+<p>Great job, you accomplished so much in this lesson! First you created the <code>GoToPosition.srv</code> file. Then, you&#x2019;ve added its dependencies in <code>CMakeLists.txt</code>. In addition, you checked for the build and run dependencies in <code>package.xml</code>. Lastly, you checked if ROS can see your service file. Now, let&#x2019;s move onto the code for <code>arm_mover</code>.</p>
 
                                 
                                 </section>
@@ -571,12 +653,12 @@
 
             
                 
-                <a href="packages.html" class="navigation navigation-prev " aria-label="Previous page: Packages & Catkin Workspaces">
+                <a href="node_simple_mover.html" class="navigation navigation-prev " aria-label="Previous page: Node - Simple Mover">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="ros_publishers.html" class="navigation navigation-next " aria-label="Next page: ROS Publishers">
+                <a href="Arm_Mover_Build.html" class="navigation navigation-next " aria-label="Next page: Arm Mover Build, Launch and Interact">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -587,7 +669,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Write ROS Nodes","level":"1.2.3","depth":2,"next":{"title":"ROS Publishers","level":"1.2.3.1","depth":3,"path":"ros/ros_publishers.md","ref":"ros/ros_publishers.md","articles":[]},"previous":{"title":"Packages & Catkin Workspaces","level":"1.2.2","depth":2,"path":"ros/packages.md","ref":"ros/packages.md","articles":[]},"dir":"ltr"},"config":{"plugins":["mathjax","back-to-top-button","code","splitter","page-treeview","multipart"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"page-treeview":{"collapsed":false,"copyright":"Copyright © aleen42","minHeaderCount":"1","minHeaderDeep":"1"},"splitter":{},"search":{},"multipart":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"mathjax":{"forceSVG":false,"version":"2.6-latest"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Shengchen Liu","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Robotics learning Notes","links":{"sidebar":{"Home":"https://shengchen-liu.github.io/"}},"gitbook":"*","description":"A collection of learning notes of Robotics"},"file":{"path":"ros/write_ros_nodes.md","mtime":"2021-01-03T00:53:38.163Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-01-03T01:00:42.941Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Arm Mover","level":"1.2.3.3","depth":3,"next":{"title":"Arm Mover Build, Launch and Interact","level":"1.2.3.4","depth":3,"path":"ros/Arm_Mover_Build.md","ref":"ros/Arm_Mover_Build.md","articles":[]},"previous":{"title":"Node - Simple Mover","level":"1.2.3.2","depth":3,"path":"ros/node_simple_mover.md","ref":"ros/node_simple_mover.md","articles":[]},"dir":"ltr"},"config":{"plugins":["mathjax","back-to-top-button","code","splitter","page-treeview","multipart"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"page-treeview":{"collapsed":false,"copyright":"Copyright © aleen42","minHeaderCount":"1","minHeaderDeep":"1"},"splitter":{},"search":{},"multipart":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"mathjax":{"forceSVG":false,"version":"2.6-latest"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Shengchen Liu","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Robotics learning Notes","links":{"sidebar":{"Home":"https://shengchen-liu.github.io/"}},"gitbook":"*","description":"A collection of learning notes of Robotics"},"file":{"path":"ros/arm_mover.md","mtime":"2021-01-03T00:36:06.308Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-01-03T01:00:42.941Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
