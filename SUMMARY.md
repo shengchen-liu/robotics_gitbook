@@ -9,6 +9,7 @@
   * [Write ROS Nodes](ros/write_ros_nodes.md)
     * [ROS Publishers](ros/ros_publishers.md)
     * [Node - Simple Mover](ros/node_simple_mover.md)
+    * [ROS Services](ros/ros_services.md)
     * [Arm Mover](ros/arm_mover.md)
     * [Arm Mover Build, Launch and Interact](ros/Arm_Mover_Build.md)
     * [ROS Clients and Subscribers](ros/ROS_Clients_and_Subscribers.md)
