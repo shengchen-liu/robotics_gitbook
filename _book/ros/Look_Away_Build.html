@@ -1,0 +1,673 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Look Away: Build, Launch and Interact · Robotics learning Notes</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="Shengchen Liu">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-treeview/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-multipart/multipart.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="Pub-Sub_Class_Template.html" />
+    
+    
+    <link rel="prev" href="Look_Away.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://shengchen-liu.github.io/" target="_blank" class="custom-link">Home</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="ros_essentials.html">
+            
+                <a href="ros_essentials.html">
+            
+                    
+                    ROS Essentials
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="turtlesim.html">
+            
+                <a href="turtlesim.html">
+            
+                    
+                    Turtle Sim
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="packages.html">
+            
+                <a href="packages.html">
+            
+                    
+                    Packages & Catkin Workspaces
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="write_ros_nodes.html">
+            
+                <a href="write_ros_nodes.html">
+            
+                    
+                    Write ROS Nodes
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.3.1" data-path="ros_publishers.html">
+            
+                <a href="ros_publishers.html">
+            
+                    
+                    ROS Publishers
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3.2" data-path="node_simple_mover.html">
+            
+                <a href="node_simple_mover.html">
+            
+                    
+                    Node - Simple Mover
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3.3" data-path="arm_mover.html">
+            
+                <a href="arm_mover.html">
+            
+                    
+                    Arm Mover
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3.4" data-path="Arm_Mover_Build.html">
+            
+                <a href="Arm_Mover_Build.html">
+            
+                    
+                    Arm Mover Build, Launch and Interact
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3.5" data-path="ROS_Clients_and_Subscribers.html">
+            
+                <a href="ROS_Clients_and_Subscribers.html">
+            
+                    
+                    ROS Clients and Subscribers
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3.6" data-path="Look_Away.html">
+            
+                <a href="Look_Away.html">
+            
+                    
+                    Look Away
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.3.7" data-path="Look_Away_Build.html">
+            
+                <a href="Look_Away_Build.html">
+            
+                    
+                    Look Away: Build, Launch and Interact
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3.8" data-path="Pub-Sub_Class_Template.html">
+            
+                <a href="Pub-Sub_Class_Template.html">
+            
+                    
+                    Pub-Sub Template
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../path_planning/path_planning.html">
+            
+                <a href="../path_planning/path_planning.html">
+            
+                    
+                    Path Planning
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../path_planning/continuous_representation.html">
+            
+                <a href="../path_planning/continuous_representation.html">
+            
+                    
+                    Continuous Representation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../path_planning/discrete planning.html">
+            
+                <a href="../path_planning/discrete planning.html">
+            
+                    
+                    Discretization
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../path_planning/roadmap.html">
+            
+                <a href="../path_planning/roadmap.html">
+            
+                    
+                    Roadmap
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.3.1" data-path="../path_planning/visibility_graph.html">
+            
+                <a href="../path_planning/visibility_graph.html">
+            
+                    
+                    Visibility graph
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.3.1.1" data-path="../path_planning/voronoi.html">
+            
+                <a href="../path_planning/voronoi.html">
+            
+                    
+                    Voronoi Diagram
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3.2" data-path="../path_planning/cell_decomposition.html">
+            
+                <a href="../path_planning/cell_decomposition.html">
+            
+                    
+                    Cell Decomposition
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.3.2.1" data-path="../path_planning/exact_cell_decomposition.html">
+            
+                <a href="../path_planning/exact_cell_decomposition.html">
+            
+                    
+                    Exact Cell Decomposition
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3.3" data-path="../path_planning/approximate_cell_decomposition.html">
+            
+                <a href="../path_planning/approximate_cell_decomposition.html">
+            
+                    
+                    Approximate Cell Decomposition
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../path_planning/potential_field.html">
+            
+                <a href="../path_planning/potential_field.html">
+            
+                    
+                    Potential Field
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="../path_planning/graph_search.html">
+            
+                <a href="../path_planning/graph_search.html">
+            
+                    
+                    Graph Search
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.5.1" data-path="../path_planning/a_star.html">
+            
+                <a href="../path_planning/a_star.html">
+            
+                    
+                    A*
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Look Away: Build, Launch and Interact</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <div class="treeview__container"><div class="treeview__container-title"><span class="treeview__main-title">Treeview</span><span class="treeview__copyright">Copyright &#xA9; aleen42 all right reserved, powered by <a href="https://github.com/aleen42" target="_blank">aleen42</a></span></div><ul>
+<li><div><a href="#8-look-away-build-launch-and-interact">8. Look Away: Build, Launch and Interact</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#modifying-cmakeliststxt">Modifying CMakeLists.txt</a><i></i></div></li>
+<li><div><a href="#building-the-package">Building the package</a><i></i></div></li>
+<li><div><a href="#launching-the-nodes">Launching the nodes</a><i></i></div></li>
+<li><div><a href="#interacting-with-the-arm">Interacting with the arm</a><i></i></div></li>
+<li><a href="#"></a></li>
+</ul></li>
+</ul>
+</div>
+
+<h1 id="8-look-away-build-launch-and-interact">8. Look Away: Build, Launch and Interact</h1>
+<h2 id="modifying-cmakeliststxt">Modifying CMakeLists.txt</h2>
+<p>Before compiling the <code>look_away.cpp</code> code, you have to include instructions for the compiler. As a reminder, for every C++ ROS node you write, you have to add its dependencies in <code>CMakeLists.txt file</code>. Open the <code>simple_arm</code> package&#x2019;s <code>CMakeLists.txt</code> file, located in <code>/home/workspace/catkin_ws/src/simple_arm/</code>, and add the following instructions at the bottom of the file:</p>
+<pre><code class="lang-html">add_executable(look_away src/look_away.cpp)
+target_link_libraries(look_away ${catkin_LIBRARIES})
+add_dependencies(look_away simple_arm_generate_messages_cpp)
+</code></pre>
+<h2 id="building-the-package">Building the package</h2>
+<p>Now that you&#x2019;ve written the <code>look_away</code> C++ script, and included specific instructions for your compiler, let&#x2019;s build the package:</p>
+<pre><code class="lang-sh">$ <span class="hljs-built_in">cd</span> /home/workspace/catkin_ws/
+$ catkin_make
+</code></pre>
+<h2 id="launching-the-nodes">Launching the nodes</h2>
+<p>You can now launch and interact with <code>simple_arm</code> just as before:</p>
+<pre><code class="lang-sh">$ <span class="hljs-built_in">cd</span> /home/workspace/catkin_ws/
+$ <span class="hljs-built_in">source</span> devel/setup.bash
+$ roslaunch simple_arm robot_spawn.launch
+</code></pre>
+<h2 id="interacting-with-the-arm">Interacting with the arm</h2>
+<p>After launching, the arm should move away from the grey sky and look towards the blocks. To view the camera image stream, you can use the same command as before:</p>
+<pre><code class="lang-sh">$ rqt_image_view /rgb_camera/image_raw
+</code></pre>
+<p>To check that everything is working as expected, open a new terminal and send a service call to point the arm directly up towards the sky (note that the line break in the message is necessary):</p>
+<pre><code class="lang-sh">$ <span class="hljs-built_in">cd</span> /home/workspace/catkin_ws/
+$ <span class="hljs-built_in">source</span> devel/setup.bash
+$ rosservice call /arm_mover/safe_move <span class="hljs-string">&quot;joint_1: 0
+joint_2: 0&quot;</span>
+</code></pre>
+<h2 id=""> </h2>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="Look_Away.html" class="navigation navigation-prev " aria-label="Previous page: Look Away">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="Pub-Sub_Class_Template.html" class="navigation navigation-next " aria-label="Next page: Pub-Sub Template">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Look Away: Build, Launch and Interact","level":"1.2.3.7","depth":3,"next":{"title":"Pub-Sub Template","level":"1.2.3.8","depth":3,"path":"ros/Pub-Sub_Class_Template.md","ref":"ros/Pub-Sub_Class_Template.md","articles":[]},"previous":{"title":"Look Away","level":"1.2.3.6","depth":3,"path":"ros/Look_Away.md","ref":"ros/Look_Away.md","articles":[]},"dir":"ltr"},"config":{"plugins":["mathjax","back-to-top-button","code","splitter","page-treeview","multipart"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"page-treeview":{"collapsed":false,"copyright":"Copyright © aleen42","minHeaderCount":"1","minHeaderDeep":"1"},"splitter":{},"search":{},"multipart":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"mathjax":{"forceSVG":false,"version":"2.6-latest"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Shengchen Liu","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Robotics learning Notes","links":{"sidebar":{"Home":"https://shengchen-liu.github.io/"}},"gitbook":"*","description":"A collection of learning notes of Robotics"},"file":{"path":"ros/Look_Away_Build.md","mtime":"2021-01-03T00:43:41.993Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-01-03T01:00:42.941Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="https://cdn.mathjax.org/mathjax/2.6-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-mathjax/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

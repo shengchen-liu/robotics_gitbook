@@ -1,0 +1,679 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Pub-Sub Template · Robotics learning Notes</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="Shengchen Liu">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-treeview/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-multipart/multipart.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../path_planning/path_planning.html" />
+    
+    
+    <link rel="prev" href="Look_Away_Build.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://shengchen-liu.github.io/" target="_blank" class="custom-link">Home</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="ros_essentials.html">
+            
+                <a href="ros_essentials.html">
+            
+                    
+                    ROS Essentials
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="turtlesim.html">
+            
+                <a href="turtlesim.html">
+            
+                    
+                    Turtle Sim
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="packages.html">
+            
+                <a href="packages.html">
+            
+                    
+                    Packages & Catkin Workspaces
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="write_ros_nodes.html">
+            
+                <a href="write_ros_nodes.html">
+            
+                    
+                    Write ROS Nodes
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.3.1" data-path="ros_publishers.html">
+            
+                <a href="ros_publishers.html">
+            
+                    
+                    ROS Publishers
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3.2" data-path="node_simple_mover.html">
+            
+                <a href="node_simple_mover.html">
+            
+                    
+                    Node - Simple Mover
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3.3" data-path="arm_mover.html">
+            
+                <a href="arm_mover.html">
+            
+                    
+                    Arm Mover
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3.4" data-path="Arm_Mover_Build.html">
+            
+                <a href="Arm_Mover_Build.html">
+            
+                    
+                    Arm Mover Build, Launch and Interact
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3.5" data-path="ROS_Clients_and_Subscribers.html">
+            
+                <a href="ROS_Clients_and_Subscribers.html">
+            
+                    
+                    ROS Clients and Subscribers
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3.6" data-path="Look_Away.html">
+            
+                <a href="Look_Away.html">
+            
+                    
+                    Look Away
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3.7" data-path="Look_Away_Build.html">
+            
+                <a href="Look_Away_Build.html">
+            
+                    
+                    Look Away: Build, Launch and Interact
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.3.8" data-path="Pub-Sub_Class_Template.html">
+            
+                <a href="Pub-Sub_Class_Template.html">
+            
+                    
+                    Pub-Sub Template
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../path_planning/path_planning.html">
+            
+                <a href="../path_planning/path_planning.html">
+            
+                    
+                    Path Planning
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../path_planning/continuous_representation.html">
+            
+                <a href="../path_planning/continuous_representation.html">
+            
+                    
+                    Continuous Representation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../path_planning/discrete planning.html">
+            
+                <a href="../path_planning/discrete planning.html">
+            
+                    
+                    Discretization
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../path_planning/roadmap.html">
+            
+                <a href="../path_planning/roadmap.html">
+            
+                    
+                    Roadmap
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.3.1" data-path="../path_planning/visibility_graph.html">
+            
+                <a href="../path_planning/visibility_graph.html">
+            
+                    
+                    Visibility graph
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.3.1.1" data-path="../path_planning/voronoi.html">
+            
+                <a href="../path_planning/voronoi.html">
+            
+                    
+                    Voronoi Diagram
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3.2" data-path="../path_planning/cell_decomposition.html">
+            
+                <a href="../path_planning/cell_decomposition.html">
+            
+                    
+                    Cell Decomposition
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.3.2.1" data-path="../path_planning/exact_cell_decomposition.html">
+            
+                <a href="../path_planning/exact_cell_decomposition.html">
+            
+                    
+                    Exact Cell Decomposition
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3.3" data-path="../path_planning/approximate_cell_decomposition.html">
+            
+                <a href="../path_planning/approximate_cell_decomposition.html">
+            
+                    
+                    Approximate Cell Decomposition
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../path_planning/potential_field.html">
+            
+                <a href="../path_planning/potential_field.html">
+            
+                    
+                    Potential Field
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="../path_planning/graph_search.html">
+            
+                <a href="../path_planning/graph_search.html">
+            
+                    
+                    Graph Search
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.5.1" data-path="../path_planning/a_star.html">
+            
+                <a href="../path_planning/a_star.html">
+            
+                    
+                    A*
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Pub-Sub Template</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <div class="treeview__container"><div class="treeview__container-title"><span class="treeview__main-title">Treeview</span><span class="treeview__copyright">Copyright &#xA9; aleen42 all right reserved, powered by <a href="https://github.com/aleen42" target="_blank">aleen42</a></span></div><ul>
+<li><div><a href="#pub-sub-class-template">Pub-Sub Class Template</a><i></i></div></li>
+</ul>
+</div>
+
+<h1 id="pub-sub-class-template">Pub-Sub Class Template</h1>
+<pre><code class="lang-C++">include &lt;ros/ros.h&gt;
+
+<span class="hljs-keyword">class</span> SubscribeAndPublish
+{
+<span class="hljs-keyword">public</span>:
+  SubscribeAndPublish()
+  {
+    <span class="hljs-comment">//Topic you want to publish</span>
+    pub_ = n_.advertise&lt;PUBLISHED_MESSAGE_TYPE&gt;(<span class="hljs-string">&quot;/published_topic&quot;</span>, <span class="hljs-number">1</span>);
+
+    <span class="hljs-comment">//Topic you want to subscribe</span>
+    sub_ = n_.subscribe(<span class="hljs-string">&quot;/subscribed_topic&quot;</span>, <span class="hljs-number">1</span>, &amp;SubscribeAndPublish::callback, <span class="hljs-keyword">this</span>);
+  }
+
+  <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">callback</span><span class="hljs-params">(<span class="hljs-keyword">const</span> SUBSCRIBED_MESSAGE_TYPE&amp; input)</span>
+  </span>{
+    PUBLISHED_MESSAGE_TYPE output;
+    <span class="hljs-comment">//.... do something with the input and generate the output...</span>
+    pub_.publish(output);
+  }
+
+<span class="hljs-keyword">private</span>:
+  ros::NodeHandle n_; 
+  ros::Publisher pub_;
+  ros::Subscriber sub_;
+
+};<span class="hljs-comment">//End of class SubscribeAndPublish</span>
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">int</span> argc, <span class="hljs-keyword">char</span> **argv)</span>
+</span>{
+  <span class="hljs-comment">//Initiate ROS</span>
+  ros::init(argc, argv, <span class="hljs-string">&quot;subscribe_and_publish&quot;</span>);
+
+  <span class="hljs-comment">//Create an object of class SubscribeAndPublish that will take care of everything</span>
+  SubscribeAndPublish SAPObject;
+
+  ros::spin();
+
+  <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="Look_Away_Build.html" class="navigation navigation-prev " aria-label="Previous page: Look Away: Build, Launch and Interact">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../path_planning/path_planning.html" class="navigation navigation-next " aria-label="Next page: Path Planning">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Pub-Sub Template","level":"1.2.3.8","depth":3,"next":{"title":"Path Planning","level":"1.3","depth":1,"path":"path_planning/path_planning.md","ref":"path_planning/path_planning.md","articles":[{"title":"Continuous Representation","level":"1.3.1","depth":2,"path":"path_planning/continuous_representation.md","ref":"path_planning/continuous_representation.md","articles":[]},{"title":"Discretization","level":"1.3.2","depth":2,"path":"path_planning/discrete planning.md","ref":"path_planning/discrete planning.md","articles":[]},{"title":"Roadmap","level":"1.3.3","depth":2,"path":"path_planning/roadmap.md","ref":"path_planning/roadmap.md","articles":[{"title":"Visibility graph","level":"1.3.3.1","depth":3,"path":"path_planning/visibility_graph.md","ref":"path_planning/visibility_graph.md","articles":[{"title":"Voronoi Diagram","level":"1.3.3.1.1","depth":4,"path":"path_planning/voronoi.md","ref":"path_planning/voronoi.md","articles":[]}]},{"title":"Cell Decomposition","level":"1.3.3.2","depth":3,"path":"path_planning/cell_decomposition.md","ref":"path_planning/cell_decomposition.md","articles":[{"title":"Exact Cell Decomposition","level":"1.3.3.2.1","depth":4,"path":"path_planning/exact_cell_decomposition.md","ref":"path_planning/exact_cell_decomposition.md","articles":[]}]},{"title":"Approximate Cell Decomposition","level":"1.3.3.3","depth":3,"path":"path_planning/approximate_cell_decomposition.md","ref":"path_planning/approximate_cell_decomposition.md","articles":[]}]},{"title":"Potential Field","level":"1.3.4","depth":2,"path":"path_planning/potential_field.md","ref":"path_planning/potential_field.md","articles":[]},{"title":"Graph Search","level":"1.3.5","depth":2,"path":"path_planning/graph_search.md","ref":"path_planning/graph_search.md","articles":[{"title":"A*","level":"1.3.5.1","depth":3,"path":"path_planning/a_star.md","ref":"path_planning/a_star.md","articles":[]}]}]},"previous":{"title":"Look Away: Build, Launch and Interact","level":"1.2.3.7","depth":3,"path":"ros/Look_Away_Build.md","ref":"ros/Look_Away_Build.md","articles":[]},"dir":"ltr"},"config":{"plugins":["mathjax","back-to-top-button","code","splitter","page-treeview","multipart"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"page-treeview":{"collapsed":false,"copyright":"Copyright © aleen42","minHeaderCount":"1","minHeaderDeep":"1"},"splitter":{},"search":{},"multipart":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"mathjax":{"forceSVG":false,"version":"2.6-latest"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Shengchen Liu","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Robotics learning Notes","links":{"sidebar":{"Home":"https://shengchen-liu.github.io/"}},"gitbook":"*","description":"A collection of learning notes of Robotics"},"file":{"path":"ros/Pub-Sub_Class_Template.md","mtime":"2021-01-03T00:53:57.464Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-01-03T01:00:42.941Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="https://cdn.mathjax.org/mathjax/2.6-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-mathjax/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

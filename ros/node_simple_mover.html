@@ -1,0 +1,744 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Node - Simple Mover · Robotics learning Notes</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="Shengchen Liu">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-treeview/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-multipart/multipart.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="arm_mover.html" />
+    
+    
+    <link rel="prev" href="ros_publishers.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://shengchen-liu.github.io/" target="_blank" class="custom-link">Home</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="ros_essentials.html">
+            
+                <a href="ros_essentials.html">
+            
+                    
+                    ROS Essentials
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="turtlesim.html">
+            
+                <a href="turtlesim.html">
+            
+                    
+                    Turtle Sim
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="packages.html">
+            
+                <a href="packages.html">
+            
+                    
+                    Packages & Catkin Workspaces
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="write_ros_nodes.html">
+            
+                <a href="write_ros_nodes.html">
+            
+                    
+                    Write ROS Nodes
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.3.1" data-path="ros_publishers.html">
+            
+                <a href="ros_publishers.html">
+            
+                    
+                    ROS Publishers
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.3.2" data-path="node_simple_mover.html">
+            
+                <a href="node_simple_mover.html">
+            
+                    
+                    Node - Simple Mover
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3.3" data-path="arm_mover.html">
+            
+                <a href="arm_mover.html">
+            
+                    
+                    Arm Mover
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3.4" data-path="Arm_Mover_Build.html">
+            
+                <a href="Arm_Mover_Build.html">
+            
+                    
+                    Arm Mover Build, Launch and Interact
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3.5" data-path="ROS_Clients_and_Subscribers.html">
+            
+                <a href="ROS_Clients_and_Subscribers.html">
+            
+                    
+                    ROS Clients and Subscribers
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3.6" data-path="Look_Away.html">
+            
+                <a href="Look_Away.html">
+            
+                    
+                    Look Away
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3.7" data-path="Look_Away_Build.html">
+            
+                <a href="Look_Away_Build.html">
+            
+                    
+                    Look Away: Build, Launch and Interact
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3.8" data-path="Pub-Sub_Class_Template.html">
+            
+                <a href="Pub-Sub_Class_Template.html">
+            
+                    
+                    Pub-Sub Template
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../path_planning/path_planning.html">
+            
+                <a href="../path_planning/path_planning.html">
+            
+                    
+                    Path Planning
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../path_planning/continuous_representation.html">
+            
+                <a href="../path_planning/continuous_representation.html">
+            
+                    
+                    Continuous Representation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../path_planning/discrete planning.html">
+            
+                <a href="../path_planning/discrete planning.html">
+            
+                    
+                    Discretization
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../path_planning/roadmap.html">
+            
+                <a href="../path_planning/roadmap.html">
+            
+                    
+                    Roadmap
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.3.1" data-path="../path_planning/visibility_graph.html">
+            
+                <a href="../path_planning/visibility_graph.html">
+            
+                    
+                    Visibility graph
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.3.1.1" data-path="../path_planning/voronoi.html">
+            
+                <a href="../path_planning/voronoi.html">
+            
+                    
+                    Voronoi Diagram
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3.2" data-path="../path_planning/cell_decomposition.html">
+            
+                <a href="../path_planning/cell_decomposition.html">
+            
+                    
+                    Cell Decomposition
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.3.2.1" data-path="../path_planning/exact_cell_decomposition.html">
+            
+                <a href="../path_planning/exact_cell_decomposition.html">
+            
+                    
+                    Exact Cell Decomposition
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3.3" data-path="../path_planning/approximate_cell_decomposition.html">
+            
+                <a href="../path_planning/approximate_cell_decomposition.html">
+            
+                    
+                    Approximate Cell Decomposition
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../path_planning/potential_field.html">
+            
+                <a href="../path_planning/potential_field.html">
+            
+                    
+                    Potential Field
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="../path_planning/graph_search.html">
+            
+                <a href="../path_planning/graph_search.html">
+            
+                    
+                    Graph Search
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.5.1" data-path="../path_planning/a_star.html">
+            
+                <a href="../path_planning/a_star.html">
+            
+                    
+                    A*
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Node - Simple Mover</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <div class="treeview__container"><div class="treeview__container-title"><span class="treeview__main-title">Treeview</span><span class="treeview__copyright">Copyright &#xA9; aleen42 all right reserved, powered by <a href="https://github.com/aleen42" target="_blank">aleen42</a></span></div><ul>
+<li><div><a href="#node---simple-mover">Node - Simple Mover</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#topics">Topics</a><i></i></div></li>
+<li><div><a href="#build-and-run">Build and Run</a><i></i></div></li>
+<li><div><a href="#modifying-cmakeliststxt">Modifying CMakeLists.txt</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#a-findpackage">a. find_package()</a><i></i></div></li>
+<li><div><a href="#b-include-directories-executable-file-link-libraries-and-dependencies">b. include directories, executable file, link libraries, and dependencies</a><i></i></div></li>
+</ul></li>
+<li><div><a href="#building-the-package">Building the Package</a><i></i></div></li>
+<li><div><a href="#running-simplemover">Running simple_mover</a><i></i></div></li>
+<li><a href="#"></a></li>
+</ul></li>
+</ul>
+</div>
+
+<h1 id="node---simple-mover">Node - Simple Mover</h1>
+<p>You will now go through the process of implementing your first ROS node in C++. This node is called <code>simple_mover</code>. As its name implies, this node only has one responsibility, and that is to command joint movements for <code>simple_arm</code>.</p>
+<p>The goal of the <code>simple_mover</code> node is to command each joint in the simple arm and make it swing between -pi/2 to pi/2 over time. </p>
+<h2 id="topics">Topics</h2>
+<p>To do so, it must publish joint angle command messages to the following topics:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>Topic Name</strong></th>
+<th style="text-align:left">/simple_arm/joint_1_position_controller/command</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Message Type</strong></td>
+<td style="text-align:left">std_msgs/Float64</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Description</strong></td>
+<td style="text-align:left">Commands joint 1 to move counter-clockwise, units in radians</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>Topic Name</strong></th>
+<th style="text-align:left">/simple_arm/joint_2_position_controller/command</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Message Type</strong></td>
+<td style="text-align:left">std_msgs/Float64</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Description</strong></td>
+<td style="text-align:left">Commands joint 2 to move counter-clockwise, units in radians</td>
+</tr>
+</tbody>
+</table>
+<h2 id="build-and-run">Build and Run</h2>
+<p>Before you can run the <code>simple_mover</code> node, you have to compile the C++ script.</p>
+<h2 id="modifying-cmakeliststxt">Modifying CMakeLists.txt</h2>
+<p>In order for catkin to generate the C++ libraries, you must first modify <code>simple_arm</code>&#x2019;s <code>CMakeLists.txt</code>.</p>
+<p>CMake is the build tool underlying catkin, and <code>CMakeLists.txt</code> is a CMake script used by catkin. If you&#x2019;re familiar with the concept of makefiles, this is similar.</p>
+<p>Navigate to the package <code>CMakeLists.txt</code> file and open it:</p>
+<pre><code class="lang-sh">$ <span class="hljs-built_in">cd</span> /home/shengchen/workspace/SimpleArm/catkin_ws/src/simple_arm/
+$ gedit CMakeLists.txt
+</code></pre>
+<h3 id="a-findpackage">a. find_package()</h3>
+<p>First, ensure that the <code>find_package()</code> macro lists <code>std_msgs</code>, <code>message_generation</code>, and <code>controller_manager</code> as required packages. The <code>find_package()</code> macro should look as follows:</p>
+<pre><code class="lang-cmake"><span class="hljs-keyword">find_package</span>(catkin REQUIRED COMPONENTS
+        std_msgs
+        message_generation
+        controller_manager
+)
+</code></pre>
+<p>As the names might imply, the <code>std_msgs</code> package contains all of the basic message types, and <code>message_generation</code> is required to generate message libraries for all the supported languages (cpp, lisp, python, javascript). The <code>contoller_manager</code> is another package responsible for controlling the arm.</p>
+<h3 id="b-include-directories-executable-file-link-libraries-and-dependencies">b. include directories, executable file, link libraries, and dependencies</h3>
+<p>Now, add the following block of code at the bottom of the file:</p>
+<pre><code class="lang-cmake"><span class="hljs-keyword">include_directories</span>(<span class="hljs-keyword">include</span> <span class="hljs-variable">${catkin_INCLUDE_DIRS}</span>)
+
+<span class="hljs-keyword">add_executable</span>(simple_mover src/simple_mover.cpp)
+<span class="hljs-keyword">target_link_libraries</span>(simple_mover <span class="hljs-variable">${catkin_LIBRARIES}</span>)
+<span class="hljs-keyword">add_dependencies</span>(simple_mover simple_arm_generate_messages_cpp)
+</code></pre>
+<p>These instructions ask the compiler to include the directories, executable file, link libraries, and dependencies for your C++ code:</p>
+<pre><code class="lang-html">add_executable(node_name sourcecode_directory)
+</code></pre>
+<p>Creates the executable <code>simple_mover</code> file.</p>
+<pre><code class="lang-html">target_link_libraries(node_name ${catkin_LIBRARIES})
+</code></pre>
+<p>This will add all the linked libraries to the compiler.</p>
+<pre><code class="lang-html">add_dependencies(node_name package_name_generate_messages_cpp)
+</code></pre>
+<p>Generates message headers for this package before you can use them.</p>
+<p>Keep in mind that you should always include these instructions whenever you want to write a C++ ROS node. For more information about <code>CMakeLists.txt</code> check out <a href="http://wiki.ros.org/catkin/CMakeLists.txt" target="_blank">the CMakeLists.txt page</a> on the ROS wiki.</p>
+<h2 id="building-the-package">Building the Package</h2>
+<p>Now that you have included specific instructions for your compiler, let&#x2019;s build the package:</p>
+<pre><code class="lang-sh">$ <span class="hljs-built_in">cd</span> /home/workspace/catkin_ws/
+$ catkin_make
+</code></pre>
+<h2 id="running-simplemover">Running simple_mover</h2>
+<p>Asuming that your workspace has recently been built, you can launch <code>simple_arm</code> as follows:</p>
+<pre><code class="lang-sh">$ <span class="hljs-built_in">cd</span> /home/workspace/catkin_ws/
+$ <span class="hljs-built_in">source</span> devel/setup.bash
+$ roslaunch simple_arm robot_spawn.launch
+</code></pre>
+<p>Once the ROS Master, Gazebo, and all of our relevant nodes are up and running, we can finally launch <code>simple_mover</code>. To do so, open a new terminal and type the following commands:</p>
+<pre><code class="lang-sh">$ <span class="hljs-built_in">cd</span> ~/workspace/SimpleArm/catkin_ws
+$ <span class="hljs-built_in">source</span> devel/setup.bash
+$ rosrun simple_arm simple_mover
+</code></pre>
+<h2 id=""> </h2>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="ros_publishers.html" class="navigation navigation-prev " aria-label="Previous page: ROS Publishers">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="arm_mover.html" class="navigation navigation-next " aria-label="Next page: Arm Mover">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Node - Simple Mover","level":"1.2.3.2","depth":3,"next":{"title":"Arm Mover","level":"1.2.3.3","depth":3,"path":"ros/arm_mover.md","ref":"ros/arm_mover.md","articles":[]},"previous":{"title":"ROS Publishers","level":"1.2.3.1","depth":3,"path":"ros/ros_publishers.md","ref":"ros/ros_publishers.md","articles":[]},"dir":"ltr"},"config":{"plugins":["mathjax","back-to-top-button","code","splitter","page-treeview","multipart"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"page-treeview":{"collapsed":false,"copyright":"Copyright © aleen42","minHeaderCount":"1","minHeaderDeep":"1"},"splitter":{},"search":{},"multipart":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"mathjax":{"forceSVG":false,"version":"2.6-latest"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Shengchen Liu","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Robotics learning Notes","links":{"sidebar":{"Home":"https://shengchen-liu.github.io/"}},"gitbook":"*","description":"A collection of learning notes of Robotics"},"file":{"path":"ros/node_simple_mover.md","mtime":"2021-01-02T23:54:05.526Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-01-03T01:00:42.941Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="https://cdn.mathjax.org/mathjax/2.6-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-mathjax/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
